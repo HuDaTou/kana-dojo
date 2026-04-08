@@ -1,6 +1,7 @@
-import ContentLayout from '@/shared/components/layout/ContentLayout';
+import LegalLayout from '@/shared/components/layout/LegalLayout';
 import PostWrapper from '@/shared/components/layout/PostWrapper';
 import patchNotesData from './patchNotesData.json';
+import { FileDiff } from 'lucide-react';
 
 export interface Release {
   id: number;
@@ -27,34 +28,44 @@ const PatchNotes = async () => {
   // If no GitHub releases, use local patch notes data
   if (!patches || patches.length === 0) {
     return (
-      <ContentLayout>
-        <div className='space-y-6'>
+      <LegalLayout icon={<FileDiff className='size-6' />}>
+        <div className='space-y-8'>
           {patchNotesData.map((patch, index) => (
-            <PostWrapper
-              key={index}
-              textContent={patch.changes
-                .map(change => `- ${change}`)
-                .join('\n')}
-              tag={`v${patch.version}`}
-              date={new Date(patch.date).toISOString()}
-            />
+            <div key={index}>
+              <PostWrapper
+                textContent={patch.changes
+                  .map(change => `- ${change}`)
+                  .join('\n')}
+                tag={`v${patch.version}`}
+                date={new Date(patch.date).toISOString()}
+              />
+              {index < patchNotesData.length - 1 && (
+                <hr className='mt-8 border-(--border-color) opacity-50' />
+              )}
+            </div>
           ))}
         </div>
-      </ContentLayout>
+      </LegalLayout>
     );
   }
 
   return (
-    <ContentLayout>
-      {patches.map(release => (
-        <PostWrapper
-          key={release.id}
-          textContent={release.body}
-          tag={release.tag_name}
-          date={release.published_at}
-        />
-      ))}
-    </ContentLayout>
+    <LegalLayout icon={<FileDiff className='size-6' />}>
+      <div className='space-y-8'>
+        {patches.map((release, index) => (
+          <div key={release.id}>
+            <PostWrapper
+              textContent={release.body}
+              tag={release.tag_name}
+              date={release.published_at}
+            />
+            {index < patches.length - 1 && (
+              <hr className='mt-8 border-(--border-color) opacity-50' />
+            )}
+          </div>
+        ))}
+      </div>
+    </LegalLayout>
   );
 };
 

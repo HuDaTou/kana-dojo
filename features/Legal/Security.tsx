@@ -1,10 +1,11 @@
 import PostWrapper from '@/shared/components/layout/PostWrapper';
 import securityPolicy from '@/shared/lib/legal/securityPolicy';
 import LegalLayout from '@/shared/components/layout/LegalLayout';
+import { FileLock2 } from 'lucide-react';
 
 const SecurityPolicy = () => {
   return (
-    <LegalLayout>
+    <LegalLayout icon={<FileLock2 className='size-6' />}>
       <PostWrapper textContent={securityPolicy} />
     </LegalLayout>
   );

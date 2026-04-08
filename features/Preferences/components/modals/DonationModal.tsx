@@ -5,6 +5,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Heart, X } from 'lucide-react';
 import { useCallback } from 'react';
 import { useClick } from '@/shared/hooks/generic/useAudio';
+import { cn } from '@/shared/lib/utils';
 
 interface DonationModalProps {
   open: boolean;
@@ -34,8 +35,8 @@ export default function DonationModal({
         >
           <div className='flex items-center justify-between border-b border-(--border-color) bg-(--background-color) px-6 py-5'>
             <div className='flex items-center gap-3'>
-              <span className='motion-safe:animate-float inline-flex h-8 w-8 items-center justify-center rounded-2xl border-b-4 border-(--main-color-accent) bg-(--main-color) text-(--background-color) [animation-delay:200ms]'>
-                <Heart className='size-5 fill-current' />
+              <span className='motion-safe:animate-float inline-flex h-12 w-12 items-center justify-center rounded-2xl border-b-4 border-(--secondary-color-accent) bg-(--secondary-color) text-(--background-color) [--float-distance:-3px] [animation-delay:200ms] '>
+                <Heart className='size-6 fill-current' />
               </span>
               <DialogPrimitive.Title className='text-2xl font-semibold text-(--main-color)'>
                 A small favor, if you can
@@ -87,7 +88,9 @@ export default function DonationModal({
                   borderRadius='3xl'
                   borderBottomThickness={16}
                   asChild
-                  className='motion-safe:animate-float px-5 py-4 text-lg font-semibold [animation-delay:600ms] sm:w-auto'
+                  className={cn(
+                    'motion-safe:animate-float px-5 py-4 text-lg font-semibold [--float-distance:-4px] [animation-delay:600ms] sm:w-auto',
+                  )}
                 >
                   <a
                     href='https://ko-fi.com/kanadojo'
