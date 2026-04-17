@@ -5,19 +5,19 @@ import useKanaStore from '@/features/Kana/store/useKanaStore';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import { useClick, useCorrect, useError } from '@/shared/hooks/generic/useAudio';
-// import GameIntel from '@/shared/components/Game/GameIntel';
+// import GameIntel from '@/shared/ui-composite/Game/GameIntel';
 import { useStopwatch } from 'react-timer-hook';
 import { useStatsStore } from '@/features/Progress';
 import { useShallow } from 'zustand/react/shallow';
-import Stars from '@/shared/components/Game/Stars';
+import Stars from '@/shared/ui-composite/Game/Stars';
 import { useCrazyModeTrigger } from '@/features/CrazyMode/hooks/useCrazyModeTrigger';
-import { getGlobalAdaptiveSelector } from '@/shared/lib/adaptiveSelection';
-import { GameBottomBar } from '@/shared/components/Game/GameBottomBar';
+import { getGlobalAdaptiveSelector } from '@/shared/utils/adaptiveSelection';
+import { GameBottomBar } from '@/shared/ui-composite/Game/GameBottomBar';
 import { isKanaInputAnswerCorrect } from '@/features/Kana/lib/isKanaInputAnswerCorrect';
 import useClassicSessionStore from '@/shared/store/useClassicSessionStore';
 import { useAdaptiveTargetLength } from '@/shared/hooks/game/useAdaptiveTargetLength';
 import { useThemePreferences } from '@/features/Preferences';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@/shared/utils/utils';
 
 // Get the global adaptive selector for weighted character selection
 const adaptiveSelector = getGlobalAdaptiveSelector();
@@ -388,3 +388,4 @@ const InputGame = ({ isHidden, isReverse = false }: InputGameProps) => {
 };
 
 export default InputGame;
+

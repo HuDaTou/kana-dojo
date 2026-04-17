@@ -7,16 +7,16 @@ import { IVocabObj } from '@/features/Vocabulary/store/useVocabStore';
 import { useClick, useCorrect, useError } from '@/shared/hooks/generic/useAudio';
 import { useStopwatch } from 'react-timer-hook';
 import { useGameStats, useStatsDisplay } from '@/features/Progress';
-import Stars from '@/shared/components/Game/Stars';
-import AnswerSummary from '@/shared/components/Game/AnswerSummary';
-import SSRAudioButton from '@/shared/components/audio/SSRAudioButton';
-import FuriganaText from '@/shared/components/text/FuriganaText';
+import Stars from '@/shared/ui-composite/Game/Stars';
+import AnswerSummary from '@/shared/ui-composite/Game/AnswerSummary';
+import SSRAudioButton from '@/shared/ui-composite/audio/SSRAudioButton';
+import FuriganaText from '@/shared/ui-composite/text/FuriganaText';
 import { useCrazyModeTrigger } from '@/features/CrazyMode/hooks/useCrazyModeTrigger';
-import { getGlobalAdaptiveSelector } from '@/shared/lib/adaptiveSelection';
-import { GameBottomBar } from '@/shared/components/Game/GameBottomBar';
+import { getGlobalAdaptiveSelector } from '@/shared/utils/adaptiveSelection';
+import { GameBottomBar } from '@/shared/ui-composite/Game/GameBottomBar';
 import useClassicSessionStore from '@/shared/store/useClassicSessionStore';
 import { useThemePreferences } from '@/features/Preferences';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@/shared/utils/utils';
 
 // Get the global adaptive selector for weighted character selection
 const adaptiveSelector = getGlobalAdaptiveSelector();
@@ -386,3 +386,4 @@ const VocabInputGame = ({
 };
 
 export default VocabInputGame;
+

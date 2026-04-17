@@ -1,10 +1,10 @@
 import { ConverterInterface } from '@/features/AnkiConverter/components/ConverterInterface';
 import { routing } from '@/core/i18n/routing';
-import { FAQSchema, type FAQItem } from '@/shared/components/SEO/FAQSchema';
+import { FAQSchema, type FAQItem } from '@/shared/ui-composite/SEO/FAQSchema';
 import {
   HowToSchema,
   type HowToStep,
-} from '@/shared/components/SEO/HowToSchema';
+} from '@/shared/ui-composite/SEO/HowToSchema';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -642,3 +642,4 @@ npm run anki:convert -- --help`}
     </>
   );
 }
+

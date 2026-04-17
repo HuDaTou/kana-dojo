@@ -6,7 +6,7 @@ import { useCrazyMode } from '@/features/CrazyMode';
 import { useShallow } from 'zustand/react/shallow';
 import { usePathname } from 'next/navigation';
 import { ScrollRestoration } from 'next-scroll-restoration';
-import WelcomeModal from '@/shared/components/Modals/WelcomeModal';
+import WelcomeModal from '@/shared/ui-composite/Modals/WelcomeModal';
 import { DonationModal } from '@/features/Preferences';
 import useOnboardingStore from '@/shared/store/useOnboardingStore';
 import {
@@ -20,13 +20,13 @@ import {
   getThemeDefaultWallpaperId,
 } from '@/features/Preferences/data/themes/themes';
 import { getWallpaperById } from '@/features/Preferences/data/wallpapers/wallpapers';
-import BackToTop from '@/shared/components/navigation/BackToTop';
-import MobileBottomBar from '@/shared/components/layout/BottomBar';
+import BackToTop from '@/shared/ui-composite/navigation/BackToTop';
+import MobileBottomBar from '@/shared/ui-composite/layout/BottomBar';
 import { useVisitTracker } from '@/features/Progress/hooks/useVisitTracker';
-import { getGlobalAdaptiveSelector } from '@/shared/lib/adaptiveSelection';
-import GlobalAudioController from '@/shared/components/layout/GlobalAudioController';
+import { getGlobalAdaptiveSelector } from '@/shared/utils/adaptiveSelection';
+import GlobalAudioController from '@/shared/ui-composite/layout/GlobalAudioController';
 import { useClick } from '@/shared/hooks/generic/useAudio';
-import ServiceWorkerRegistration from '@/shared/components/ServiceWorkerRegistration';
+import ServiceWorkerRegistration from '@/shared/ui-composite/ServiceWorkerRegistration';
 import CursorTrailRenderer from '@/features/Preferences/components/renderers/CursorTrailRenderer';
 import ClickEffectRenderer from '@/features/Preferences/components/renderers/ClickEffectRenderer';
 
@@ -331,3 +331,4 @@ export default function ClientLayout({
     </div>
   );
 }
+

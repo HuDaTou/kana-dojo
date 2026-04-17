@@ -1,11 +1,8 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
+import type { IVocabObj } from '@/entities/vocabulary';
 
-export interface IVocabObj {
-  word: string;
-  reading: string;
-  meanings: string[];
-}
+export type { IVocabObj } from '@/entities/vocabulary';
 
 interface IFormState {
   selectedGameModeVocab: string;

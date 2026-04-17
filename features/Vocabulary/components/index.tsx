@@ -7,14 +7,14 @@ import {
   vocabDataService,
   VocabLevel,
 } from '@/features/Vocabulary/services/vocabDataService';
-import LevelSetCards from '@/shared/components/Menu/LevelSetCards';
+import LevelSetCards from '@/shared/ui-composite/Menu/LevelSetCards';
 import {
   N1VocabLength,
   N2VocabLength,
   N3VocabLength,
   N4VocabLength,
   N5VocabLength,
-} from '@/shared/lib/unitSets';
+} from '@/shared/utils/unitSets';
 
 import type { IWord } from '@/shared/types/interfaces';
 
@@ -102,3 +102,4 @@ const VocabCards = () => {
 };
 
 export default VocabCards;
+

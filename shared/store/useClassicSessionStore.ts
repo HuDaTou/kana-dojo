@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { appendAttempt } from '@/shared/lib/sessionHistory';
+import { appendAttempt } from '@/shared/utils/sessionHistory';
 
 interface ClassicSessionState {
   activeSessionId: string | null;
@@ -28,4 +28,5 @@ const useClassicSessionStore = create<ClassicSessionState>((set, get) => ({
 }));
 
 export default useClassicSessionStore;
+
 

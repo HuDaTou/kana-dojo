@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAllFacts } from '@/shared/lib/server/facts';
+import { getAllFacts } from '@/shared/infra/server/facts';
 
 export async function GET() {
   try {

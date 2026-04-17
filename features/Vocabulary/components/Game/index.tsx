@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Return from '@/shared/components/Game/ReturnFromGame';
+import Return from '@/shared/ui-composite/Game/ReturnFromGame';
 import Input from './Input';
 import MCQ from './MCQ';
 import TilesMode from './TilesMode';
@@ -8,15 +8,15 @@ import TilesMode from './TilesMode';
 import useVocabStore from '@/features/Vocabulary/store/useVocabStore';
 import { useStatsStore } from '@/features/Progress';
 import { useShallow } from 'zustand/react/shallow';
-import Stats from '@/shared/components/Game/Stats';
-import ClassicSessionSummary from '@/shared/components/Game/ClassicSessionSummary';
-import StreakMilestoneOverlay from '@/shared/components/Game/StreakMilestoneOverlay';
+import Stats from '@/shared/ui-composite/Game/Stats';
+import SessionSummaryScreen from '@/shared/ui-composite/Game/SessionSummaryScreen';
+import StreakMilestoneOverlay from '@/shared/ui-composite/Game/StreakMilestoneOverlay';
 import { useRouter } from '@/core/i18n/routing';
-import { finalizeSession, startSession } from '@/shared/lib/sessionHistory';
+import { finalizeSession, startSession } from '@/shared/utils/sessionHistory';
 import useClassicSessionStore from '@/shared/store/useClassicSessionStore';
 import {
   shouldShowStreakMilestoneOverlay,
-} from '@/shared/lib/game/streakMilestones';
+} from '@/shared/utils/game/streakMilestones';
 
 const Game = () => {
   const {
@@ -158,7 +158,7 @@ const Game = () => {
         onDismiss={() => setActiveMilestone(null)}
       />
       {view === 'summary' && (
-        <ClassicSessionSummary
+        <SessionSummaryScreen
           correct={numCorrectAnswers}
           wrong={numWrongAnswers}
           bestStreak={currentStreak}
@@ -174,3 +174,4 @@ const Game = () => {
 };
 
 export default Game;
+

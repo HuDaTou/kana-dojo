@@ -6,8 +6,8 @@ import { kana } from '@/features/Kana/data/kana';
 import useKanaStore from '@/features/Kana/store/useKanaStore';
 import usePreferencesStore from '@/features/Preferences/store/usePreferencesStore';
 import { useClick } from '@/shared/hooks/generic/useAudio';
-import { ActionButton } from '@/shared/components/ui/ActionButton';
-import { cn } from '@/shared/lib/utils';
+import { ActionButton } from '@/shared/ui/components/ActionButton';
+import { cn } from '@/shared/utils/utils';
 
 interface SubsetProps {
   sliceRange: number[];
@@ -140,3 +140,4 @@ const Subset = ({ sliceRange, subgroup }: SubsetProps) => {
 };
 
 export default Subset;
+

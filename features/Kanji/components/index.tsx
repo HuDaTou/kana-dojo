@@ -9,14 +9,14 @@ import {
   kanjiDataService,
   KanjiLevel,
 } from '@/features/Kanji/services/kanjiDataService';
-import LevelSetCards from '@/shared/components/Menu/LevelSetCards';
+import LevelSetCards from '@/shared/ui-composite/Menu/LevelSetCards';
 import {
   N1KanjiLength,
   N2KanjiLength,
   N3KanjiLength,
   N4KanjiLength,
   N5KanjiLength,
-} from '@/shared/lib/unitSets';
+} from '@/shared/utils/unitSets';
 
 const levelOrder: KanjiLevel[] = ['n5', 'n4', 'n3', 'n2', 'n1'];
 const KANJI_PER_SET = 10;
@@ -94,3 +94,4 @@ const KanjiCards = () => {
 };
 
 export default KanjiCards;
+

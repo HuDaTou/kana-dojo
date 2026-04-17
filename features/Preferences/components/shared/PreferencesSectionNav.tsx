@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@/shared/utils/utils';
 import { useClick } from '@/shared/hooks/generic/useAudio';
 import { Joystick, Palette, Wand2 } from 'lucide-react';
 
@@ -192,3 +192,4 @@ const PreferencesSectionNav = () => {
 };
 
 export default PreferencesSectionNav;
+

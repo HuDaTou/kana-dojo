@@ -425,6 +425,13 @@
     "character": "Eren Yeager"
   },
   {
+    "japanese": "ブチャラティ、来た！",
+    "romaji": "Bucharati, kita!",
+    "english": "Bucciarati is here! (alt wording 17) (alt wording 69)",
+    "anime": "JoJo's Bizarre Adventure: Golden Wind",
+    "character": "Narancia Ghirga"
+  },
+  {
     "japanese": "オレ様の美技にブギウギ",
     "romaji": "Ore-sama no bigi ni bugiugi",
     "english": "Dance to my beautiful technique!",
@@ -481,47 +488,47 @@
     "character": "Char Aznable"
   },
   {
-  "japanese": "何ッ！？",
-  "romaji": "Nani!?",
-  "english": "What?! (alt wording 19)",
-  "anime": "Fist of the North Star",
-  "character": "Shin"
+    "japanese": "何ッ！？",
+    "romaji": "Nani!?",
+    "english": "What?! (alt wording 19)",
+    "anime": "Fist of the North Star",
+    "character": "Shin"
   },
   {
-  "japanese": "イエス！イエス！イエス！イエス！",
-  "romaji": "Iesu! Iesu! Iesu! Iesu!",
-  "english": "Yes! Yes! Yes! Yes! (alt wording 2) (alt wording 54)",
-  "anime": "JoJo's Bizarre Adventure: Stardust Crusaders",
-  "character": "DIO"
+    "japanese": "イエス！イエス！イエス！イエス！",
+    "romaji": "Iesu! Iesu! Iesu! Iesu!",
+    "english": "Yes! Yes! Yes! Yes! (alt wording 2) (alt wording 54)",
+    "anime": "JoJo's Bizarre Adventure: Stardust Crusaders",
+    "character": "DIO"
   },
   {
-  "japanese": "レロレロレロレロ",
-  "romaji": "Rero rero rero rero",
-  "english": "Lero lero lero lero. (alt wording 27)",
-  "anime": "JoJo's Bizarre Adventure: Stardust Crusaders",
-  "character": "Noriaki Kakyoin"
-},
-{
-  "japanese": "おまえはもう死んでいる",
-  "romaji": "Omae wa mou shindeiru",
-  "english": "You're already dead. (alt wording 18)",
-  "anime": "Fist of the North Star",
-  "character": "Kenshiro"
-},
+    "japanese": "レロレロレロレロ",
+    "romaji": "Rero rero rero rero",
+    "english": "Lero lero lero lero. (alt wording 27)",
+    "anime": "JoJo's Bizarre Adventure: Stardust Crusaders",
+    "character": "Noriaki Kakyoin"
+  },
   {
-  "japanese": "おれは人間を超越する！",
-  "romaji": "Ore wa ningen o chouetsu suru!",
-  "english": "I will transcend humanity!",
-  "anime": "JoJo's Bizarre Adventure: Battle Tendency",
-  "character": "Kars"
-}
+    "japanese": "おまえはもう死んでいる",
+    "romaji": "Omae wa mou shindeiru",
+    "english": "You're already dead. (alt wording 18)",
+    "anime": "Fist of the North Star",
+    "character": "Kenshiro"
+  },
   {
-  "japanese": "おれは人間を超越する！",
-  "romaji": "Ore wa ningen o chouetsu suru!",
-  "english": "I will transcend humanity!",
-  "anime": "JoJo's Bizarre Adventure: Battle Tendency",
-  "character": "Kars"
-},
+    "japanese": "おれは人間を超越する！",
+    "romaji": "Ore wa ningen o chouetsu suru!",
+    "english": "I will transcend humanity!",
+    "anime": "JoJo's Bizarre Adventure: Battle Tendency",
+    "character": "Kars"
+  },
+  {
+    "japanese": "おれは人間を超越する！",
+    "romaji": "Ore wa ningen o chouetsu suru!",
+    "english": "I will transcend humanity!",
+    "anime": "JoJo's Bizarre Adventure: Battle Tendency",
+    "character": "Kars"
+  },
   {
     "japanese": "オラに元気を分けてくれ!",
     "romaji": "Ora ni genki o wakete kure!",
@@ -530,10 +537,52 @@
     "character": "Son Goku"
   },
   {
-  "japanese": "やれやれだぜ。",
-  "romaji": "Yare yare da ze.",
-  "english": "Good grief.",
-  "anime": "JoJo's Bizarre Adventure: Stardust Crusaders",
-  "character": "Jotaro Kujo"
-}
+    "japanese": "やれやれだぜ。",
+    "romaji": "Yare yare da ze.",
+    "english": "Good grief.",
+    "anime": "JoJo's Bizarre Adventure: Stardust Crusaders",
+    "character": "Jotaro Kujo"
+  },
+  {
+    "japanese": "俺を誰だと思ってやがる!",
+    "romaji": "Ore o dare da to omotte yagaru!",
+    "english": "Who the hell do you think I am! (alt wording 46)",
+    "anime": "Gurren Lagann",
+    "character": "Kamina"
+  },
+  {
+    "japanese": "やれやれだぜ",
+    "romaji": "Yare yare da ze",
+    "english": "Good grief. (alt wording 6)",
+    "anime": "JoJo's Bizarre Adventure: Stardust Crusaders",
+    "character": "Jotaro Kujo"
+  },
+  {
+    "japanese": "僕はもう逃げない!",
+    "romaji": "Boku wa mou nigenai!",
+    "english": "I won't run away anymore! (alt wording 47)",
+    "anime": "Hunter x Hunter",
+    "character": "Gon Freecss"
+  },
+  {
+    "japanese": "駆逐してやる!この世から一匹残らず!",
+    "romaji": "Kuchiku shite yaru! Kono yo kara ippiki nokorazu!",
+    "english": "I'll exterminate them! Every last one from this world!",
+    "anime": "Attack on Titan",
+    "character": "Eren Yeager"
+  },
+  {
+    "japanese": "ここより、世界に痛みを。",
+    "romaji": "Koko yori, sekai ni itami wo.",
+    "english": "From here, to the world, pain.",
+    "anime": "Naruto Shippuden",
+    "character": "Pain"
+  },
+  {
+    "japanese": "俺は趣味でヒーローをやっている者だ",
+    "romaji": "Ore wa shumi de hiiroo o yatte iru mono da",
+    "english": "I'm just a hero for fun. (alt wording 42)",
+    "anime": "One Punch Man",
+    "character": "Saitama"
+  }
 ]

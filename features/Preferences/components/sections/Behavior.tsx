@@ -3,7 +3,7 @@ import usePreferencesStore from '@/features/Preferences/store/usePreferencesStor
 import { useClick } from '@/shared/hooks/generic/useAudio';
 import { AudioLines, VolumeX, Volume2 } from 'lucide-react';
 import { useJapaneseTTS } from '@/features/Preferences/hooks/useJapaneseTTS';
-import { ActionButton } from '@/shared/components/ui/ActionButton';
+import { ActionButton } from '@/shared/ui/components/ActionButton';
 // import{Command, KeyboardOff} from 'lucide-react'
 // import HotkeyReference from './HotkeyReference';
 
@@ -211,3 +211,4 @@ const Behavior = () => {
 };
 
 export default Behavior;
+

@@ -8,7 +8,7 @@ import useAchievementStore, {
   type AchievementNotification as NotificationType,
 } from '../../store/useAchievementStore';
 import { useClick } from '@/shared/hooks/generic/useAudio';
-import { cardBorderStyles } from '@/shared/lib/styles';
+import { cardBorderStyles } from '@/shared/utils/styles';
 
 interface AchievementNotificationProps {
   notification: NotificationType;
@@ -230,3 +230,4 @@ export const AchievementNotificationContainer = () => {
 };
 
 export default AchievementNotification;
+

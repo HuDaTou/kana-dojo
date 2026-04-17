@@ -5,15 +5,15 @@ import { kana } from '@/features/Kana/data/kana';
 import useKanaStore from '@/features/Kana/store/useKanaStore';
 import { Random } from 'random-js';
 import { useCorrect, useError } from '@/shared/hooks/generic/useAudio';
-// import GameIntel from '@/shared/components/Game/GameIntel';
-import { buttonBorderStyles } from '@/shared/lib/styles';
-import { mcqKeyMappings } from '@/shared/lib/keyMappings';
+// import GameIntel from '@/shared/ui-composite/Game/GameIntel';
+import { buttonBorderStyles } from '@/shared/utils/styles';
+import { mcqKeyMappings } from '@/shared/utils/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
 import { useStatsStore } from '@/features/Progress';
 import { useShallow } from 'zustand/react/shallow';
-import Stars from '@/shared/components/Game/Stars';
+import Stars from '@/shared/ui-composite/Game/Stars';
 import { useCrazyModeTrigger } from '@/features/CrazyMode/hooks/useCrazyModeTrigger';
-import { getGlobalAdaptiveSelector } from '@/shared/lib/adaptiveSelection';
+import { getGlobalAdaptiveSelector } from '@/shared/utils/adaptiveSelection';
 import { useSmartReverseMode } from '@/shared/hooks/game/useSmartReverseMode';
 import { useAdaptiveOptionCount } from '@/shared/hooks/game/useAdaptiveOptionCount';
 import useClassicSessionStore from '@/shared/store/useClassicSessionStore';
@@ -536,3 +536,4 @@ const KanaMCQ = ({ isHidden }: KanaMCQProps) => {
 };
 
 export default KanaMCQ;
+

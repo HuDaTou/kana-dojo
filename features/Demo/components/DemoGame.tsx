@@ -9,10 +9,10 @@ import {
 import clsx from 'clsx';
 import { Random } from 'random-js';
 import { useCorrect, useError, useClick } from '@/shared/hooks/generic/useAudio';
-import Stars from '@/shared/components/Game/Stars';
+import Stars from '@/shared/ui-composite/Game/Stars';
 import { useCrazyModeTrigger } from '@/features/CrazyMode/hooks/useCrazyModeTrigger';
 import { useStopwatch } from 'react-timer-hook';
-import { GameBottomBar } from '@/shared/components/Game/GameBottomBar';
+import { GameBottomBar } from '@/shared/ui-composite/Game/GameBottomBar';
 import { useThemePreferences } from '@/features/Preferences/facade/useThemePreferences';
 import {
   X,
@@ -721,3 +721,4 @@ const DemoGame = () => {
 };
 
 export default DemoGame;
+

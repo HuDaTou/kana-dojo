@@ -11,7 +11,7 @@ import { getWallpaperById } from '@/features/Preferences/data/wallpapers/wallpap
 import usePreferencesStore from '@/features/Preferences/store/usePreferencesStore';
 import clsx from 'clsx';
 import { useClick, useLong } from '@/shared/hooks/generic/useAudio';
-import { buttonBorderStyles } from '@/shared/lib/styles';
+import { buttonBorderStyles } from '@/shared/utils/styles';
 import { useState } from 'react';
 import { Dice5 } from 'lucide-react';
 import { Random } from 'random-js';
@@ -694,3 +694,4 @@ const Themes = ({ useNewIconDesign = false }: ThemesProps) => {
 };
 
 export default Themes;
+

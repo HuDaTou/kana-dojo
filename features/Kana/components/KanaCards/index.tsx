@@ -3,7 +3,7 @@ import { Fragment, useState } from 'react';
 import clsx from 'clsx';
 import Subset from './Subset';
 import { useClick } from '@/shared/hooks/generic/useAudio';
-import { cardBorderStyles } from '@/shared/lib/styles';
+import { cardBorderStyles } from '@/shared/utils/styles';
 import { ChevronUp } from 'lucide-react';
 
 const STORAGE_KEY = 'kana-hidden-subsets';
@@ -211,3 +211,4 @@ const KanaCards = ({ filter = 'all' }: { filter?: KanaCardsFilter }) => {
 };
 
 export default KanaCards;
+

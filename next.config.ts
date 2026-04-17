@@ -64,9 +64,11 @@ const nextConfig: NextConfig = {
   turbopack: {
     // Resolve aliases for faster module resolution
     resolveAlias: {
+      '@/entities': './entities',
       '@/features': './features',
-      '@/shared': './shared',
       '@/core': './core',
+      '@/shared': './shared',
+      '@/widgets': './widgets',
     },
   },
 

@@ -5,18 +5,18 @@ import { CircleCheck, CircleX } from 'lucide-react';
 import { Random } from 'random-js';
 import { IVocabObj } from '@/features/Vocabulary/store/useVocabStore';
 import { useCorrect, useError } from '@/shared/hooks/generic/useAudio';
-import { buttonBorderStyles } from '@/shared/lib/styles';
-// import GameIntel from '@/shared/components/Game/GameIntel';
-import { mcqKeyMappings } from '@/shared/lib/keyMappings';
+import { buttonBorderStyles } from '@/shared/utils/styles';
+// import GameIntel from '@/shared/ui-composite/Game/GameIntel';
+import { mcqKeyMappings } from '@/shared/utils/keyMappings';
 import { useStopwatch } from 'react-timer-hook';
 import { useStatsStore } from '@/features/Progress';
 import { useShallow } from 'zustand/react/shallow';
-import Stars from '@/shared/components/Game/Stars';
-import AnswerSummary from '@/shared/components/Game/AnswerSummary';
-import SSRAudioButton from '@/shared/components/audio/SSRAudioButton';
-import FuriganaText from '@/shared/components/text/FuriganaText';
+import Stars from '@/shared/ui-composite/Game/Stars';
+import AnswerSummary from '@/shared/ui-composite/Game/AnswerSummary';
+import SSRAudioButton from '@/shared/ui-composite/audio/SSRAudioButton';
+import FuriganaText from '@/shared/ui-composite/text/FuriganaText';
 import { useCrazyModeTrigger } from '@/features/CrazyMode/hooks/useCrazyModeTrigger';
-import { getGlobalAdaptiveSelector } from '@/shared/lib/adaptiveSelection';
+import { getGlobalAdaptiveSelector } from '@/shared/utils/adaptiveSelection';
 import { useSmartReverseMode } from '@/shared/hooks/game/useSmartReverseMode';
 
 const random = new Random();
@@ -433,3 +433,4 @@ const VocabMCQ = ({ selectedWordObjs, isHidden }: VocabMCQProps) => {
 };
 
 export default VocabMCQ;
+

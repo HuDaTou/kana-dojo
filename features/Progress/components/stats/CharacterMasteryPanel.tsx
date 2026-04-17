@@ -2,8 +2,8 @@
 
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '@/shared/lib/utils';
-import { ActionButton } from '@/shared/components/ui/ActionButton';
+import { cn } from '@/shared/utils/utils';
+import { ActionButton } from '@/shared/ui/components/ActionButton';
 import { kana } from '@/features/Kana/data/kana';
 import useKanjiStore from '@/features/Kanji/store/useKanjiStore';
 import useVocabStore from '@/features/Vocabulary/store/useVocabStore';
@@ -491,3 +491,4 @@ function CharacterRow({
     </motion.div>
   );
 }
+

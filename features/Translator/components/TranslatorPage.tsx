@@ -3,8 +3,8 @@
 import { Suspense, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ArrowLeftRight, WifiOff, Languages, Sparkles } from 'lucide-react';
-import { cn } from '@/shared/lib/utils';
-import { ActionButton } from '@/shared/components/ui/ActionButton';
+import { cn } from '@/shared/utils/utils';
+import { ActionButton } from '@/shared/ui/components/ActionButton';
 
 import useTranslatorStore from '../store/useTranslatorStore';
 import TranslatorInput from './TranslatorInput';
@@ -235,3 +235,4 @@ export default function TranslatorPage(props: TranslatorPageProps) {
     </Suspense>
   );
 }
+

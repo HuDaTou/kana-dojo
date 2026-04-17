@@ -1,11 +1,11 @@
-import KanaMenu from '@/shared/components/Menu/KanaMenu';
+import { KanaMenu } from '@/widgets';
 import type { Metadata } from 'next';
 import { generatePageMetadata } from '@/core/i18n/metadata-helpers';
-import { CourseSchema } from '@/shared/components/SEO/CourseSchema';
-import { BreadcrumbSchema } from '@/shared/components/SEO/BreadcrumbSchema';
-import { FAQSchema, hiraganaFAQs } from '@/shared/components/SEO/FAQSchema';
-import { LearningResourceSchema } from '@/shared/components/SEO/LearningResourceSchema';
-import { DojoRouteSchema } from '@/shared/components/SEO/DojoRouteSchema';
+import { CourseSchema } from '@/shared/ui-composite/SEO/CourseSchema';
+import { BreadcrumbSchema } from '@/shared/ui-composite/SEO/BreadcrumbSchema';
+import { FAQSchema, hiraganaFAQs } from '@/shared/ui-composite/SEO/FAQSchema';
+import { LearningResourceSchema } from '@/shared/ui-composite/SEO/LearningResourceSchema';
+import { DojoRouteSchema } from '@/shared/ui-composite/SEO/DojoRouteSchema';
 import { routing } from '@/core/i18n/routing';
 
 // Generate static pages for all locales at build time
@@ -74,3 +74,4 @@ export default async function KanaPage({
     </>
   );
 }
+
