@@ -951,7 +951,9 @@
     "english": "Hurry to do good",
     "meaning": "Do worthwhile things promptly",
     "completed": false,
-    "issued": true
+    "issued": false,
+    "completedBy": "som002",
+    "completedPR": 14267
   },
   {
     "id": 107,
