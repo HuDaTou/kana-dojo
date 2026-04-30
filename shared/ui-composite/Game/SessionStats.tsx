@@ -2,9 +2,10 @@
 import { useEffect, useMemo } from 'react';
 import {
   CircleArrowLeft,
+  ArrowLeft,
   Hourglass,
-  SquareCheck,
-  SquareX,
+  Check,
+  X,
   Target,
   Timer,
   Flame,
@@ -18,11 +19,11 @@ import { useStatsDisplay } from '@/features/Progress';
 import { useClick } from '@/shared/hooks/generic/useAudio';
 
 const sessionStatIconBadgeStyle = {
-  base: 'flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border-b-6 [--float-distance:-2px]',
+  base: 'flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border-b-4 [--float-distance:-0px]',
   selected:
     'border-(--main-color-accent) bg-(--main-color) text-(--background-color)',
   unselected:
-    'border-(--secondary-color-accent) bg-(--secondary-color) text-(--background-color) opacity-85',
+    'border-(--main-color-accent) bg-(--main-color) text-(--background-color) opacity-85',
 } as const;
 
 interface BentoTileProps {
@@ -221,13 +222,13 @@ const SessionStats: React.FC = () => {
               valueClassName='text-4xl sm:text-5xl'
             />
             <BentoTile
-              Icon={SquareCheck}
+              Icon={Check}
               label='correct'
               value={numCorrectAnswers}
               className='lg:col-span-1'
             />
             <BentoTile
-              Icon={SquareX}
+              Icon={X}
               label='wrong'
               value={numWrongAnswers}
               className='lg:col-span-1'
@@ -276,10 +277,12 @@ const SessionStats: React.FC = () => {
             }}
             className='group flex h-14 flex-1 cursor-pointer items-center justify-center gap-3 rounded-xl bg-(--secondary-color) px-4 text-lg font-bold text-(--background-color) lowercase outline-hidden transition-all duration-150 sm:px-10 sm:text-xl md:flex-none'
           >
-            <CircleArrowLeft
-              className='h-5 w-5 group-hover:animate-none sm:h-6 sm:w-6'
-              strokeWidth={2.5}
-            />
+            <span className='flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-(--background-color) bg-(--background-color) text-(--secondary-color)'>
+              <ArrowLeft
+                className='h-5 w-5 group-hover:animate-none sm:h-6 sm:w-6'
+                strokeWidth={2.5}
+              />
+            </span>
             <span className='leading-none'>back</span>
           </button>
         </div>
