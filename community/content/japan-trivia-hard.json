@@ -592,5 +592,16 @@
     "Yokohama"
   ],
   "correctIndex": 0
+},
+  {
+  "question": "Which Japanese city is known for the floating garden observatory?",
+  "difficulty": "hard",
+  "answers": [
+    "Osaka",
+    "Nagoya",
+    "Kobe",
+    "Yokohama"
+  ],
+  "correctIndex": 0
 }
 ]
