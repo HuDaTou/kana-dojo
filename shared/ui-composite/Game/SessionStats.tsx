@@ -2,9 +2,10 @@
 import { useEffect, useMemo } from 'react';
 import {
   CircleArrowLeft,
+  ArrowLeft,
   Hourglass,
-  SquareCheck,
-  SquareX,
+  Check,
+  X,
   Target,
   Timer,
   Flame,
@@ -16,6 +17,14 @@ import {
 } from 'lucide-react';
 import { useStatsDisplay } from '@/features/Progress';
 import { useClick } from '@/shared/hooks/generic/useAudio';
+
+const sessionStatIconBadgeStyle = {
+  base: 'flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border-b-4 [--float-distance:-0px]',
+  selected:
+    'border-(--main-color-accent) bg-(--main-color) text-(--background-color)',
+  unselected:
+    'border-(--main-color-accent) bg-(--main-color) text-(--background-color) opacity-85',
+} as const;
 
 interface BentoTileProps {
   Icon: LucideIcon;
@@ -39,7 +48,11 @@ function BentoTile({
       className={`flex min-w-0 flex-col justify-between overflow-hidden rounded-[2rem] border-2 border-(--secondary-color)/10 bg-(--background-color) p-5 sm:p-6 ${className}`}
     >
       <div className='mb-2 flex min-w-0 items-center gap-2'>
-        <Icon className='h-4 w-4 shrink-0 text-(--secondary-color) opacity-60' />
+        <span
+          className={`${sessionStatIconBadgeStyle.base} ${sessionStatIconBadgeStyle.unselected}`}
+        >
+          <Icon className='h-5 w-5' />
+        </span>
         <span className='block min-w-0 break-all text-[11px] leading-tight font-bold tracking-wider text-(--secondary-color) uppercase opacity-60 sm:text-xs'>
           {label}
         </span>
@@ -58,7 +71,7 @@ function BentoTile({
   );
 }
 
-const Stats: React.FC = () => {
+const SessionStats: React.FC = () => {
   const { playClick } = useClick();
   const statsData = useStatsDisplay();
   const toggleStats = statsData.toggleStats;
@@ -156,7 +169,7 @@ const Stats: React.FC = () => {
             statistics
           </h1>
           <p className='text-base font-medium tracking-tight text-(--secondary-color) lowercase opacity-60 sm:text-xl'>
-            track your performance across all sessions.
+            track your performance in the current session.
           </p>
         </div>
 
@@ -209,13 +222,13 @@ const Stats: React.FC = () => {
               valueClassName='text-4xl sm:text-5xl'
             />
             <BentoTile
-              Icon={SquareCheck}
+              Icon={Check}
               label='correct'
               value={numCorrectAnswers}
               className='lg:col-span-1'
             />
             <BentoTile
-              Icon={SquareX}
+              Icon={X}
               label='wrong'
               value={numWrongAnswers}
               className='lg:col-span-1'
@@ -264,10 +277,12 @@ const Stats: React.FC = () => {
             }}
             className='group flex h-14 flex-1 cursor-pointer items-center justify-center gap-3 rounded-xl bg-(--secondary-color) px-4 text-lg font-bold text-(--background-color) lowercase outline-hidden transition-all duration-150 sm:px-10 sm:text-xl md:flex-none'
           >
-            <CircleArrowLeft
-              className='h-5 w-5 group-hover:animate-none sm:h-6 sm:w-6'
-              strokeWidth={2.5}
-            />
+            <span className='flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-(--background-color) bg-(--background-color) text-(--secondary-color)'>
+              <ArrowLeft
+                className='h-5 w-5 group-hover:animate-none sm:h-6 sm:w-6'
+                strokeWidth={2.5}
+              />
+            </span>
             <span className='leading-none'>back</span>
           </button>
         </div>
@@ -276,5 +291,5 @@ const Stats: React.FC = () => {
   );
 };
 
-export default Stats;
+export default SessionStats;
 

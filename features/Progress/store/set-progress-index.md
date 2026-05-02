@@ -26,9 +26,9 @@ The localforage record is stored under `kanadojo-set-progress-v1`.
 
 ## Counting rules
 
-- Kanji progress caps at `200` correct answers per `kanjiChar`
-- Vocabulary progress caps at `100` correct `meaning` answers per `word`
-- Vocabulary progress caps at `100` correct `reading` answers per `word`
+- Kanji progress caps at `100` correct answers per `kanjiChar`
+- Vocabulary progress caps at `50` correct `meaning` answers per `word`
+- Vocabulary progress caps at `50` correct `reading` answers per `word`
 - Correct answers after the cap do not change the index
 
 ## Event flow

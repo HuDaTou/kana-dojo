@@ -1,9 +1,20 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { useClick } from '@/shared/hooks/generic/useAudio';
 import { useStopwatch } from 'react-timer-hook';
 import { useStatsDisplay } from '@/features/Progress';
+import { useKanaSelection } from '@/features/Kana';
+import { useKanjiSelection } from '@/features/Kanji';
+import { useVocabSelection } from '@/features/Vocabulary';
+import { getSelectionLabels } from '@/shared/utils/selectionFormatting';
+import { SelectedLevelsCard } from '@/shared/ui-composite/Menu/SelectedLevelsCard';
+import { usePathname } from '@/core/i18n/routing';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/shared/ui/components/popover';
 import {
   X,
   SquareCheck,
@@ -13,6 +24,7 @@ import {
   MousePointerClick,
   Keyboard,
   Flame,
+  Check,
   type LucideIcon,
 } from 'lucide-react';
 import ProgressBar from './ProgressBar';
@@ -31,6 +43,7 @@ const GAME_MODE_ICONS: Record<
   type: { icon: Keyboard },
   'anti-type': { icon: Keyboard, className: 'scale-y-[-1]' },
 };
+const USE_TILDE_SEPARATOR = false;
 
 interface StatItemProps {
   icon: LucideIcon;
@@ -53,6 +66,11 @@ interface ReturnProps {
 const Return = ({ isHidden, gameMode, onQuit }: ReturnProps) => {
   const totalTimeStopwatch = useStopwatch({ autoStart: false });
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const closePopoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [isFinePointerDevice, setIsFinePointerDevice] = useState(false);
 
   const stats = useStatsDisplay();
   const saveSession = stats.saveSession;
@@ -64,6 +82,31 @@ const Return = ({ isHidden, gameMode, onQuit }: ReturnProps) => {
   const setNewTotalMilliseconds = stats.setNewTotalMilliseconds;
 
   const { playClick } = useClick();
+  const pathname = usePathname();
+  const kanaSelection = useKanaSelection();
+  const kanjiSelection = useKanjiSelection();
+  const vocabSelection = useVocabSelection();
+
+  const currentDojo = useMemo<'kana' | 'kanji' | 'vocabulary'>(() => {
+    if (pathname.includes('/kanji')) return 'kanji';
+    if (pathname.includes('/vocabulary')) return 'vocabulary';
+    return 'kana';
+  }, [pathname]);
+  const { compact: selectionLabelCompact } = useMemo(() => {
+    const dojoType = currentDojo as 'kana' | 'kanji' | 'vocabulary';
+    const selection =
+      dojoType === 'kana'
+        ? kanaSelection.selectedGroupIndices
+        : dojoType === 'kanji'
+          ? kanjiSelection.selectedSets
+          : vocabSelection.selectedSets;
+    return getSelectionLabels(dojoType, selection);
+  }, [
+    currentDojo,
+    kanaSelection.selectedGroupIndices,
+    kanjiSelection.selectedSets,
+    vocabSelection.selectedSets,
+  ]);
 
   // Start stopwatch when component becomes visible
   useEffect(() => {
@@ -81,6 +124,49 @@ const Return = ({ isHidden, gameMode, onQuit }: ReturnProps) => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const updateInputMode = (event?: MediaQueryListEvent) => {
+      setIsFinePointerDevice(event?.matches ?? mediaQuery.matches);
+    };
+
+    updateInputMode();
+    mediaQuery.addEventListener('change', updateInputMode);
+
+    return () => {
+      mediaQuery.removeEventListener('change', updateInputMode);
+    };
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (closePopoverTimeoutRef.current) {
+        clearTimeout(closePopoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const clearPopoverCloseTimeout = () => {
+    if (!closePopoverTimeoutRef.current) return;
+    clearTimeout(closePopoverTimeoutRef.current);
+    closePopoverTimeoutRef.current = null;
+  };
+
+  const openPopover = () => {
+    clearPopoverCloseTimeout();
+    setIsPopoverOpen(true);
+  };
+
+  const closePopoverWithDelay = () => {
+    clearPopoverCloseTimeout();
+    closePopoverTimeoutRef.current = setTimeout(() => {
+      setIsPopoverOpen(false);
+      closePopoverTimeoutRef.current = null;
+    }, 80);
+  };
 
   const handleExit = () => {
     playClick();
@@ -130,7 +216,7 @@ const Return = ({ isHidden, gameMode, onQuit }: ReturnProps) => {
       {/* Game mode and stats row */}
       <div className='flex w-full flex-row items-center'>
         {/* Game mode indicator */}
-        <p className='flex w-1/2 items-center justify-start gap-1 text-lg sm:gap-2 sm:pl-1 md:text-xl'>
+        <p className='flex w-1/2 items-center justify-start gap-1.5 text-lg sm:gap-2 sm:pl-1 md:text-xl'>
           {ModeIcon && (
             <ModeIcon
               className={clsx('text-(--main-color)', modeConfig.className)}
@@ -139,6 +225,47 @@ const Return = ({ isHidden, gameMode, onQuit }: ReturnProps) => {
           <span className='text-(--secondary-color)'>
             {normalizedMode}
           </span>
+          <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
+            <PopoverTrigger asChild>
+              <button
+                type='button'
+                aria-label='Show selected levels'
+                onMouseEnter={() => {
+                  if (isFinePointerDevice) openPopover();
+                }}
+                onMouseLeave={() => {
+                  if (isFinePointerDevice) closePopoverWithDelay();
+                }}
+                onClick={() => {
+                  if (!isFinePointerDevice) {
+                    setIsPopoverOpen(prev => !prev);
+                  }
+                }}
+                className='rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--main-color)'
+              >
+                <span className='flex h-6 w-6 items-center justify-center rounded-lg bg-(--main-color) border-b-3 border-(--main-color-accent) ml-0.5 sm:ml-1 mt-0.5'>
+                  <Check className='h-4 w-4 text-(--background-color)' />
+                </span>
+              </button>
+            </PopoverTrigger>
+            <PopoverContent
+              side='bottom'
+              align='start'
+              className='w-64 border-0 bg-transparent p-0 text-(--main-color) shadow-none'
+              onMouseEnter={() => {
+                if (isFinePointerDevice) openPopover();
+              }}
+              onMouseLeave={() => {
+                if (isFinePointerDevice) closePopoverWithDelay();
+              }}
+            >
+              <SelectedLevelsCard
+                currentDojo={currentDojo}
+                compactLabel={selectionLabelCompact}
+                useTildeSeparator={USE_TILDE_SEPARATOR}
+              />
+            </PopoverContent>
+          </Popover>
         </p>
 
         {/* Stats display */}

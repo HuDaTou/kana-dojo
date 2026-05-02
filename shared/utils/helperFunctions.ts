@@ -51,11 +51,8 @@ export function findHighestCounts(data: Data): HighestCounts {
   };
 }
 
-export function chunkArray(
-  array: { name: string; start: number; end: number; id: string }[],
-  chunkSize: number,
-) {
-  const result = [];
+export function chunkArray<T>(array: T[], chunkSize: number): T[][] {
+  const result: T[][] = [];
   for (let i = 0; i < array.length; i += chunkSize) {
     result.push(array.slice(i, i + chunkSize));
   }

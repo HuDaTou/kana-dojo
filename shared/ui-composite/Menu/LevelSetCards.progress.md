@@ -12,8 +12,8 @@
 
 Kanji and Vocabulary use different caps:
 
-- Kanji: `200` correct answers per item
-- Vocabulary: `100` meaning + `100` reading per item
+- Kanji: `100` correct answers per item (updated 2026-04-29)
+- Vocabulary: `50` meaning + `50` reading per item (updated 2026-04-29)
 
 Pushing the calculation up to feature-specific parents keeps the shared menu component generic and avoids leaking Kanji/Vocabulary rules into a reusable UI component.
 
@@ -22,3 +22,4 @@ Pushing the calculation up to feature-specific parents keeps the shared menu com
 - `getSetProgress(items)` must return a fraction in the range `0..1`
 - `LevelSetCards` converts that fraction into a percentage width
 - the denominator is the actual set size, so short trailing sets can still reach `100%`
+

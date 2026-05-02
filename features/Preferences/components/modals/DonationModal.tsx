@@ -94,7 +94,7 @@ export default function DonationModal({
                   borderBottomThickness={16}
                   asChild
                   className={cn(
-                    'motion-safe:animate-float px-5 py-4 text-lg font-semibold [--float-distance:-3.5px] [animation-delay:600ms] sm:w-auto',
+                    'motion-safe:animate-float px-5 py-4 text-lg font-semibold [--float-distance:-2.5px] [animation-delay:600ms] sm:w-auto',
                   )}
                 >
                   <a

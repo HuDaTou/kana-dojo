@@ -18,6 +18,7 @@ import useClassicSessionStore from '@/shared/store/useClassicSessionStore';
 import { useAdaptiveTargetLength } from '@/shared/hooks/game/useAdaptiveTargetLength';
 import { useThemePreferences } from '@/features/Preferences';
 import { cn } from '@/shared/utils/utils';
+import { shouldSuppressContinueKeyboardShortcut } from '@/shared/utils/game/continueShortcutGuard';
 
 // Get the global adaptive selector for weighted character selection
 const adaptiveSelector = getGlobalAdaptiveSelector();
@@ -206,6 +207,15 @@ const InputGame = ({ isHidden, isReverse = false }: InputGameProps) => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const isEnter = event.key === 'Enter';
       const isSpace = event.code === 'Space' || event.key === ' ';
+      const isContinueShortcut = isEnter || isSpace;
+
+      if (
+        isContinueShortcut &&
+        shouldSuppressContinueKeyboardShortcut()
+      ) {
+        event.preventDefault();
+        return;
+      }
 
       if (isEnter) {
         if (justAnsweredRef.current) {

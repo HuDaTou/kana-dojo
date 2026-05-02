@@ -55,17 +55,19 @@ const KanjiSetDictionary = memo(function KanjiSetDictionary({
             </a>
 
             <div className='flex w-full flex-col gap-1'>
-              <a
-                className='hover:text-underline w-full text-xs text-(--main-color)/80 hover:text-(--main-color)'
-                href='https://lingopie.com/blog/onyomi-vs-kunyomi/'
-                target='_blank'
-                rel='noopener'
-                onClick={() => {
-                  playClick();
-                }}
-              >
-                On{/* &apos;yomi */}
-              </a>
+              {kanjiObj.onyomi.length > 0 && kanjiObj.onyomi[0] !== '' && (
+                <a
+                  className='hover:text-underline w-full text-xs text-(--main-color)/80 hover:text-(--main-color)'
+                  href='https://lingopie.com/blog/onyomi-vs-kunyomi/'
+                  target='_blank'
+                  rel='noopener'
+                  onClick={() => {
+                    playClick();
+                  }}
+                >
+                  On{/* &apos;yomi */}
+                </a>
+              )}
               <div
                 className={clsx(
                   'h-1/2',
@@ -93,17 +95,19 @@ const KanjiSetDictionary = memo(function KanjiSetDictionary({
                   </span>
                 ))}
               </div>
-              <a
-                className='hover:text-underline w-full text-xs text-(--main-color)/80 hover:text-(--main-color)'
-                href='https://lingopie.com/blog/onyomi-vs-kunyomi/'
-                target='_blank'
-                rel='noopener'
-                onClick={() => {
-                  playClick();
-                }}
-              >
-                Kun{/* &apos;yomi */}
-              </a>
+              {kanjiObj.kunyomi.length > 0 && kanjiObj.kunyomi[0] !== '' && (
+                <a
+                  className='hover:text-underline w-full text-xs text-(--main-color)/80 hover:text-(--main-color)'
+                  href='https://lingopie.com/blog/onyomi-vs-kunyomi/'
+                  target='_blank'
+                  rel='noopener'
+                  onClick={() => {
+                    playClick();
+                  }}
+                >
+                  Kun{/* &apos;yomi */}
+                </a>
+              )}
 
               <div
                 className={clsx(
@@ -146,4 +150,5 @@ const KanjiSetDictionary = memo(function KanjiSetDictionary({
 });
 
 export default KanjiSetDictionary;
+
 

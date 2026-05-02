@@ -23,6 +23,7 @@ type QuickSelectModalProps = {
   onClearAll: () => void;
   onSelectRandom: (count: number) => void;
   unitName: string;
+  scopeLabel: string;
 };
 
 interface SetCardProps {
@@ -87,6 +88,7 @@ const QuickSelectModal = ({
   onClearAll,
   onSelectRandom,
   unitName,
+  scopeLabel,
 }: QuickSelectModalProps) => {
   const { playClick } = useClick();
   const [searchLevel, setSearchLevel] = useState('');
@@ -115,6 +117,18 @@ const QuickSelectModal = ({
     playClick();
     onClose();
   }, [playClick, onClose]);
+
+  const handleBackdropKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (e.target === e.currentTarget) {
+          e.preventDefault();
+          handleClose();
+        }
+      }
+    },
+    [handleClose],
+  );
 
   const handleToggleSet = useCallback(
     (name: string) => {
@@ -216,6 +230,9 @@ const QuickSelectModal = ({
     <div
       className='fixed inset-0 z-70 flex items-center justify-center bg-black/50 p-4'
       onClick={handleBackdropClick}
+      onKeyDown={handleBackdropKeyDown}
+      role='button'
+      tabIndex={0}
     >
       <div className='flex max-h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border-0 border-(--border-color) bg-(--background-color) sm:max-h-[80vh]'>
         <div className='flex shrink-0 items-center justify-between border-b border-(--border-color) p-4 sm:p-6'>
@@ -224,7 +241,8 @@ const QuickSelectModal = ({
               Quick Select - {unitName.toUpperCase()}
             </h2>
             <p className='mt-1 text-xs text-(--secondary-color) sm:text-sm'>
-              {selectedSets.length} of {sets.length} levels selected
+              {scopeLabel} · {selectedSets.length} of {sets.length} levels
+              selected
             </p>
           </div>
           <button
@@ -324,4 +342,3 @@ const QuickSelectModal = ({
 };
 
 export default memo(QuickSelectModal);
-

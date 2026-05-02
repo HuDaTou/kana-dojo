@@ -24,6 +24,30 @@ export type LevelSetCardsSet = {
   start: number;
   end: number;
   id: string;
+  levelNumber: number;
+};
+
+type ActiveSubunitRange = {
+  id: string;
+  label: string;
+  startLevel: number;
+  endLevel: number;
+};
+
+type VisibleRowsSectionProps<TItem> = {
+  allRows: LevelSetCardsSet[][];
+  totalRows: number;
+  collapsedRows: number[];
+  setCollapsedRows: (
+    updater: number[] | ((prev: number[]) => number[]),
+  ) => void;
+  selectedCollectionData: TItem[];
+  itemsPerSet: number;
+  selectedSets: string[];
+  setSelectedSets: (sets: string[]) => void;
+  toggleItems: (items: TItem[]) => void;
+  getSetProgress: (items: TItem[]) => number;
+  renderSetDictionary: (items: TItem[]) => React.ReactNode;
 };
 
 type LevelSetCardsProps<TLevel extends string, TItem> = {
@@ -48,12 +72,216 @@ type LevelSetCardsProps<TLevel extends string, TItem> = {
   getSetProgress: (items: TItem[]) => number;
 
   loadingText: string;
+  activeSubunitRange: ActiveSubunitRange;
 };
 
 const INITIAL_ROWS = 5;
 const ROWS_PER_LOAD = 5;
 const LEVEL_SET_SELECTED_FLOAT_CLASSES = '';
-  // 'motion-safe:animate-float [--float-distance:-3px] delay-1000ms';
+// 'motion-safe:animate-float [--float-distance:-3px] delay-1000ms';
+
+const VisibleRowsSection = <TItem,>({
+  allRows,
+  totalRows,
+  collapsedRows,
+  setCollapsedRows,
+  selectedCollectionData,
+  itemsPerSet,
+  selectedSets,
+  setSelectedSets,
+  toggleItems,
+  getSetProgress,
+  renderSetDictionary,
+}: VisibleRowsSectionProps<TItem>) => {
+  const { playClick } = useClick();
+  const [visibleRowCount, setVisibleRowCount] = useState(INITIAL_ROWS);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const loaderRef = useRef<HTMLDivElement>(null);
+
+  const visibleRows = allRows.slice(0, visibleRowCount);
+  const hasMoreRows = visibleRowCount < totalRows;
+
+  const loadMoreRows = useCallback(() => {
+    if (isLoadingMore || !hasMoreRows) return;
+    setIsLoadingMore(true);
+    setTimeout(() => {
+      setVisibleRowCount(prev => Math.min(prev + ROWS_PER_LOAD, totalRows));
+      setIsLoadingMore(false);
+    }, 150);
+  }, [hasMoreRows, isLoadingMore, totalRows]);
+
+  useEffect(() => {
+    const loader = loaderRef.current;
+    if (!loader) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting && hasMoreRows && !isLoadingMore) {
+          loadMoreRows();
+        }
+      },
+      { rootMargin: '200px' },
+    );
+
+    observer.observe(loader);
+    return () => observer.disconnect();
+  }, [hasMoreRows, isLoadingMore, loadMoreRows]);
+
+  return (
+    <>
+      {visibleRows.map((rowSets, rowIndex) => {
+        const firstSetNumber = rowSets[0]?.name.match(/\d+/)?.[0] || '1';
+        const lastSetNumber =
+          rowSets[rowSets.length - 1]?.name.match(/\d+/)?.[0] || firstSetNumber;
+        const isSingleLevel = firstSetNumber === lastSetNumber;
+        const isRowCollapsed = collapsedRows.includes(rowIndex);
+
+        return (
+          <div
+            key={`row-${rowIndex}`}
+            className={clsx('flex flex-col gap-4 py-4', cardBorderStyles)}
+          >
+            <h3 className='w-full'>
+              <button
+                type='button'
+                onClick={() => {
+                  playClick();
+                  setCollapsedRows(prev =>
+                    prev.includes(rowIndex)
+                      ? prev.filter(i => i !== rowIndex)
+                      : [...prev, rowIndex],
+                  );
+                }}
+                className={clsx(
+                  'group ml-4 flex w-full flex-row items-center gap-2 rounded-xl text-3xl hover:cursor-pointer',
+                )}
+                aria-expanded={!isRowCollapsed}
+              >
+                <ChevronUp
+                  className={clsx(
+                    'text-(--border-color) duration-250',
+                    'max-md:group-active:text-(--secondary-color)',
+                    'md:group-hover:text-(--secondary-color)',
+                    isRowCollapsed && 'rotate-180',
+                  )}
+                  size={28}
+                />
+                <span className='max-lg:hidden'>
+                  {isSingleLevel ? 'Level' : 'Levels'} {firstSetNumber}
+                  {!isSingleLevel && `-${lastSetNumber}`}
+                </span>
+                <span className='lg:hidden'>Level {firstSetNumber}</span>
+              </button>
+            </h3>
+
+            <div
+              className={clsx(
+                'flex flex-col',
+                'md:grid md:items-start',
+                rowSets.length === 1 && 'md:grid-cols-1',
+                rowSets.length === 2 && 'md:grid-cols-2',
+                rowSets.length >= 3 && 'md:grid-cols-2 2xl:grid-cols-3',
+              )}
+            >
+              {rowSets.map((setTemp, i) => {
+                const setItems = selectedCollectionData.slice(
+                  setTemp.start * itemsPerSet,
+                  setTemp.end * itemsPerSet,
+                );
+                const isSelected = selectedSets.includes(setTemp.name);
+                const progressPercent = Math.round(getSetProgress(setItems) * 100);
+
+                return (
+                  <div
+                    key={setTemp.id + setTemp.name}
+                    className={clsx(
+                      'flex h-full flex-col md:px-4',
+                      'border-(--border-color)',
+                      i < rowSets.length - 1 && 'md:border-r-1',
+                    )}
+                  >
+                    <div className='mb-4 w-full max-md:mx-4 max-md:w-[calc(100%-2rem)]'>
+                      <div className='h-9 w-full overflow-hidden rounded-2xl bg-(--background-color)'>
+                        <div
+                          className='h-full rounded-2xl transition-all duration-500'
+                          style={{
+                            width: `${progressPercent}%`,
+                            background:
+                              'linear-gradient(to right, var(--secondary-color), var(--main-color))',
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    <button
+                      className={clsx(
+                        'group flex items-center justify-center gap-2 text-2xl',
+                        'rounded-3xl hover:cursor-pointer',
+                        'transition-all duration-250 ease-in-out',
+                        'border-b-10 px-2 py-3 max-md:mx-4',
+                        isSelected && LEVEL_SET_SELECTED_FLOAT_CLASSES,
+                        isSelected
+                          ? 'border-(--secondary-color-accent) bg-(--secondary-color) text-(--background-color)'
+                          : 'border-(--border-color) bg-(--background-color) hover:border-(--main-color)/70',
+                      )}
+                      onClick={e => {
+                        e.currentTarget.blur();
+                        playClick();
+                        if (isSelected) {
+                          setSelectedSets(
+                            selectedSets.filter(set => set !== setTemp.name),
+                          );
+                        } else {
+                          setSelectedSets([
+                            ...new Set(selectedSets.concat(setTemp.name)),
+                          ]);
+                        }
+                        toggleItems(setItems);
+                      }}
+                    >
+                      {isSelected ? (
+                        <CircleCheck className='mt-0.5 fill-current text-(--background-color) duration-250' />
+                      ) : (
+                        <Circle className='mt-0.5 text-(--border-color) duration-250' />
+                      )}
+                      {setTemp.name.replace('Set ', 'Level ')}
+                    </button>
+
+                    <div
+                      className={clsx(
+                        'grid overflow-hidden',
+                        'transition-[grid-template-rows,opacity] duration-500 ease-in-out',
+                        isRowCollapsed
+                          ? 'grid-rows-[0fr] opacity-0'
+                          : 'grid-rows-[1fr] opacity-100',
+                      )}
+                    >
+                      <div className='min-h-0'>{renderSetDictionary(setItems)}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+
+      <div ref={loaderRef} className='flex justify-center py-4'>
+        {isLoadingMore && (
+          <Loader2
+            className='animate-spin text-(--secondary-color)'
+            size={24}
+          />
+        )}
+        {hasMoreRows && !isLoadingMore && (
+          <span className='text-sm text-(--secondary-color)'>
+            Scroll for more ({totalRows - visibleRowCount} rows remaining)
+          </span>
+        )}
+      </div>
+    </>
+  );
+};
 
 const LevelSetCards = <TLevel extends string, TItem>({
   levelOrder,
@@ -71,6 +299,7 @@ const LevelSetCards = <TLevel extends string, TItem>({
   renderSetDictionary,
   getSetProgress,
   loadingText,
+  activeSubunitRange,
 }: LevelSetCardsProps<TLevel, TItem>) => {
   const { playClick } = useClick();
 
@@ -139,62 +368,36 @@ const LevelSetCards = <TLevel extends string, TItem>({
       };
     }
 
-    const sets: LevelSetCardsSet[] = new Array(
-      Math.ceil(selectedCollection.data.length / itemsPerSet),
-    )
-      .fill({})
-      .map((_, i) => ({
+    const sets: LevelSetCardsSet[] = Array.from(
+      { length: Math.ceil(selectedCollection.data.length / itemsPerSet) },
+      (_, i) => ({
         name: `Set ${selectedCollection.prevLength + i + 1}`,
         start: i,
         end: i + 1,
         id: `Set ${i + 1}`,
-      }));
+        levelNumber: selectedCollection.prevLength + i + 1,
+      }),
+    );
 
-    const rows = chunkArray(sets, numColumns);
+    const visibleSets = sets.filter(
+      set =>
+        set.levelNumber >= activeSubunitRange.startLevel &&
+        set.levelNumber <= activeSubunitRange.endLevel,
+    );
+    const rows: LevelSetCardsSet[][] = chunkArray(visibleSets, numColumns);
 
     return {
-      setsTemp: sets,
+      setsTemp: visibleSets,
       allRows: rows,
       totalRows: rows.length,
     };
-  }, [itemsPerSet, numColumns, selectedCollection]);
-
-  const [visibleRowCount, setVisibleRowCount] = useState(INITIAL_ROWS);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
-  const loaderRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setVisibleRowCount(INITIAL_ROWS);
-  }, [selectedUnitName]);
-
-  const visibleRows = allRows.slice(0, visibleRowCount);
-  const hasMoreRows = visibleRowCount < totalRows;
-
-  const loadMoreRows = useCallback(() => {
-    if (isLoadingMore || !hasMoreRows) return;
-    setIsLoadingMore(true);
-    setTimeout(() => {
-      setVisibleRowCount(prev => Math.min(prev + ROWS_PER_LOAD, totalRows));
-      setIsLoadingMore(false);
-    }, 150);
-  }, [hasMoreRows, isLoadingMore, totalRows]);
-
-  useEffect(() => {
-    const loader = loaderRef.current;
-    if (!loader) return;
-
-    const observer = new IntersectionObserver(
-      entries => {
-        if (entries[0].isIntersecting && hasMoreRows && !isLoadingMore) {
-          loadMoreRows();
-        }
-      },
-      { rootMargin: '200px' },
-    );
-
-    observer.observe(loader);
-    return () => observer.disconnect();
-  }, [hasMoreRows, isLoadingMore, loadMoreRows]);
+  }, [
+    activeSubunitRange.endLevel,
+    activeSubunitRange.startLevel,
+    itemsPerSet,
+    numColumns,
+    selectedCollection,
+  ]);
 
   const handleToggleSet = (setName: string) => {
     const set = setsTemp.find(s => s.name === setName);
@@ -217,7 +420,15 @@ const LevelSetCards = <TLevel extends string, TItem>({
   const handleSelectAll = () => {
     const allSetNames = setsTemp.map(set => set.name);
     setSelectedSets(allSetNames);
-    if (selectedCollection) toggleItems(selectedCollection.data);
+    if (selectedCollection) {
+      const visibleItems = setsTemp.flatMap(set =>
+        selectedCollection.data.slice(
+          set.start * itemsPerSet,
+          set.end * itemsPerSet,
+        ),
+      );
+      toggleItems(visibleItems);
+    }
   };
 
   const handleClearAll = () => {
@@ -279,153 +490,25 @@ const LevelSetCards = <TLevel extends string, TItem>({
         onClearAll={handleClearAll}
         onSelectRandom={handleSelectRandom}
         unitName={selectedUnitName}
+        scopeLabel={activeSubunitRange.label}
       />
 
-      {visibleRows.map((rowSets, rowIndex) => {
-        const firstSetNumber = rowSets[0]?.name.match(/\d+/)?.[0] || '1';
-        const lastSetNumber =
-          rowSets[rowSets.length - 1]?.name.match(/\d+/)?.[0] || firstSetNumber;
-
-        return (
-          <div
-            key={`row-${rowIndex}`}
-            className={clsx('flex flex-col gap-4 py-4', cardBorderStyles)}
-          >
-            <h3 className='w-full'>
-              <button
-                type='button'
-                onClick={() => {
-                  playClick();
-                  setCollapsedRows(prev =>
-                    prev.includes(rowIndex)
-                      ? prev.filter(i => i !== rowIndex)
-                      : [...prev, rowIndex],
-                  );
-                }}
-                className={clsx(
-                  'group ml-4 flex w-full flex-row items-center gap-2 rounded-xl text-3xl hover:cursor-pointer',
-                  collapsedRows.includes(rowIndex) && 'mb-1.5',
-                )}
-                aria-expanded={!collapsedRows.includes(rowIndex)}
-              >
-                <ChevronUp
-                  className={clsx(
-                    'text-(--border-color) duration-250',
-                    'max-md:group-active:text-(--secondary-color)',
-                    'md:group-hover:text-(--secondary-color)',
-                    collapsedRows.includes(rowIndex) && 'rotate-180',
-                  )}
-                  size={28}
-                />
-                <span className='max-lg:hidden'>
-                  Levels {firstSetNumber}
-                  {firstSetNumber !== lastSetNumber ? `-${lastSetNumber}` : ''}
-                </span>
-                <span className='lg:hidden'>Level {firstSetNumber}</span>
-              </button>
-            </h3>
-
-            {!collapsedRows.includes(rowIndex) && (
-              <div
-                className={clsx(
-                  'flex w-full flex-col',
-                  'md:grid md:items-start lg:grid-cols-2 2xl:grid-cols-3',
-                )}
-              >
-                {rowSets.map((setTemp, i) => {
-                  const setItems = selectedCollection.data.slice(
-                    setTemp.start * itemsPerSet,
-                    setTemp.end * itemsPerSet,
-                  );
-                  const isSelected = selectedSets.includes(setTemp.name);
-                  const progressPercent = Math.round(
-                    getSetProgress(setItems) * 100,
-                  );
-
-                  return (
-                    <div
-                      key={setTemp.id + setTemp.name}
-                      className={clsx(
-                        'flex h-full flex-col md:px-4',
-                        'border-(--border-color)',
-                        i < rowSets.length - 1 && 'md:border-r-1',
-                      )}
-                    >
-                      {/* Progress Bar */}
-                      <div className='mb-4 w-full max-md:mx-4 max-md:w-[calc(100%-2rem)]'>
-                        <div className='h-8 w-full overflow-hidden rounded-2xl bg-(--background-color)'>
-                          <div
-                            className='h-full rounded-2xl transition-all duration-500'
-                            style={{
-                              width: `${progressPercent}%`,
-                              background:
-                                'linear-gradient(to right, var(--secondary-color), var(--main-color))',
-                            }}
-                          />
-                        </div>
-                      </div>
-
-
-                      <button
-                      className={clsx(
-                        'group flex items-center justify-center gap-2 text-2xl',
-                        'rounded-3xl hover:cursor-pointer',
-                        'transition-all duration-250 ease-in-out',
-                        'border-b-10 px-2 py-3 max-md:mx-4',
-                        isSelected && LEVEL_SET_SELECTED_FLOAT_CLASSES,
-                        isSelected
-                          ? 'border-(--secondary-color-accent) bg-(--secondary-color) text-(--background-color)'
-                          : 'border-(--border-color) bg-(--background-color) hover:border-(--main-color)/70',
-                        )}
-                        onClick={e => {
-                          e.currentTarget.blur();
-                          playClick();
-                          if (isSelected) {
-                            setSelectedSets(
-                              selectedSets.filter(set => set !== setTemp.name),
-                            );
-                          } else {
-                            setSelectedSets([
-                              ...new Set(selectedSets.concat(setTemp.name)),
-                            ]);
-                          }
-                          toggleItems(setItems);
-                        }}
-                      >
-                        {isSelected ? (
-                          <CircleCheck className='mt-0.5 fill-current text-(--background-color) duration-250' />
-                        ) : (
-                          <Circle className='mt-0.5 text-(--border-color) duration-250' />
-                        )}
-                        {setTemp.name.replace('Set ', 'Level ')}
-                      </button>
-
-                      {renderSetDictionary(setItems)}
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-        );
-      })}
-
-      <div ref={loaderRef} className='flex justify-center py-4'>
-        {isLoadingMore && (
-          <Loader2
-            className='animate-spin text-(--secondary-color)'
-            size={24}
-          />
-        )}
-        {hasMoreRows && !isLoadingMore && (
-          <span className='text-sm text-(--secondary-color)'>
-            Scroll for more ({totalRows - visibleRowCount} rows remaining)
-          </span>
-        )}
-      </div>
+      <VisibleRowsSection
+        key={`${selectedUnitName}:${activeSubunitRange.id}`}
+        allRows={allRows}
+        totalRows={totalRows}
+        collapsedRows={collapsedRows}
+        setCollapsedRows={setCollapsedRows}
+        selectedCollectionData={selectedCollection.data}
+        itemsPerSet={itemsPerSet}
+        selectedSets={selectedSets}
+        setSelectedSets={setSelectedSets}
+        toggleItems={toggleItems}
+        getSetProgress={getSetProgress}
+        renderSetDictionary={renderSetDictionary}
+      />
     </div>
   );
 };
 
 export default LevelSetCards;
-

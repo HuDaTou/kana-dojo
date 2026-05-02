@@ -16,7 +16,7 @@
     "game": "Fate/stay night [Realta Nua]",
     "character": "Saber",
     "id": 2,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -36,7 +36,7 @@
     "game": "Steins;Gate: My Darling's Embrace",
     "character": "Rintaro Okabe",
     "id": 4,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -66,7 +66,7 @@
     "game": "Dragon Quest series",
     "character": "Recurring command voice",
     "id": 7,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -76,7 +76,7 @@
     "game": "Kingdom Hearts series (JP dub)",
     "character": "Sora",
     "id": 8,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -126,7 +126,7 @@
     "game": "Final Fantasy Type-0",
     "character": "Class Zero",
     "id": 13,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -146,7 +146,7 @@
     "game": "Fire Emblem series",
     "character": "Various protagonists",
     "id": 15,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -156,7 +156,7 @@
     "game": "Onimusha series",
     "character": "Nobunaga Oda",
     "id": 16,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -186,7 +186,7 @@
     "game": "Tales series",
     "character": "Various endings",
     "id": 19,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -196,7 +196,7 @@
     "game": "Samurai game proverb line",
     "character": "Musashi reference",
     "id": 20,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -216,7 +216,7 @@
     "game": "Fate/stay night [Realta Nua]",
     "character": "Saber",
     "id": 22,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -226,7 +226,7 @@
     "game": "Tales of the Abyss",
     "character": "Luke fon Fabre",
     "id": 23,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -306,7 +306,7 @@
     "game": "Monster Hunter series",
     "character": "Guild Handler lines",
     "id": 31,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -326,7 +326,7 @@
     "game": "Final Fantasy Type-0",
     "character": "Class Zero",
     "id": 33,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -336,7 +336,7 @@
     "game": "Yakuza: Like a Dragon",
     "character": "Ichiban Kasuga",
     "id": 34,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -346,7 +346,7 @@
     "game": "Fire Emblem series",
     "character": "Various protagonists",
     "id": 35,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -356,7 +356,7 @@
     "game": "Onimusha series",
     "character": "Nobunaga Oda",
     "id": 36,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -366,7 +366,7 @@
     "game": "Persona 5 Strikers",
     "character": "Joker",
     "id": 37,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -376,7 +376,7 @@
     "game": "The Legend of Zelda: Breath of the Wild (JP)",
     "character": "Revali",
     "id": 38,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -386,7 +386,7 @@
     "game": "Tales series",
     "character": "Various endings",
     "id": 39,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -406,7 +406,7 @@
     "game": "The Prince of Tennis: Sweat & Tears 2",
     "character": "Ryoma Echizen",
     "id": 41,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -416,7 +416,7 @@
     "game": "Fate/stay night [Realta Nua]",
     "character": "Saber",
     "id": 42,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -426,7 +426,7 @@
     "game": "Tales of the Abyss",
     "character": "Luke fon Fabre",
     "id": 43,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -436,7 +436,7 @@
     "game": "Steins;Gate: My Darling's Embrace",
     "character": "Rintaro Okabe",
     "id": 44,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -446,7 +446,7 @@
     "game": "Danganronpa series",
     "character": "Makoto Naegi",
     "id": 45,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -476,7 +476,7 @@
     "game": "Kingdom Hearts series (JP dub)",
     "character": "Sora",
     "id": 48,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -496,7 +496,7 @@
     "game": "Dragon Quest XI",
     "character": "Hero / party lines",
     "id": 50,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -506,7 +506,7 @@
     "game": "Monster Hunter series",
     "character": "Guild Handler lines",
     "id": 51,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -526,7 +526,7 @@
     "game": "Final Fantasy Type-0",
     "character": "Class Zero",
     "id": 53,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -557,7 +557,9 @@
     "character": "Nobunaga Oda",
     "id": 56,
     "issued": false,
-    "completed": false
+    "completed": false,
+    "completedBy": "leeydev",
+    "completedPR": 15042
   },
   {
     "japanese": "世界を救うって、そういうことだろ？",
@@ -566,7 +568,7 @@
     "game": "Persona 5 Strikers",
     "character": "Joker",
     "id": 57,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -576,7 +578,7 @@
     "game": "The Legend of Zelda: Breath of the Wild (JP)",
     "character": "Revali",
     "id": 58,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -586,7 +588,7 @@
     "game": "Tales series",
     "character": "Various endings",
     "id": 59,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -596,7 +598,7 @@
     "game": "Samurai game proverb line",
     "character": "Musashi reference",
     "id": 60,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -626,7 +628,7 @@
     "game": "Tales of the Abyss",
     "character": "Luke fon Fabre",
     "id": 63,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -636,7 +638,7 @@
     "game": "Steins;Gate: My Darling's Embrace",
     "character": "Rintaro Okabe",
     "id": 64,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -656,7 +658,7 @@
     "game": "JoJo’s Bizarre Adventure: All-Star Battle",
     "character": "Giorno Giovanna",
     "id": 66,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -666,7 +668,7 @@
     "game": "Dragon Quest series",
     "character": "Recurring command voice",
     "id": 67,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -676,7 +678,7 @@
     "game": "Kingdom Hearts series (JP dub)",
     "character": "Sora",
     "id": 68,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -686,7 +688,7 @@
     "game": "Street Fighter series",
     "character": "Ryu",
     "id": 69,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -736,7 +738,7 @@
     "game": "Yakuza: Like a Dragon",
     "character": "Ichiban Kasuga",
     "id": 74,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -776,7 +778,7 @@
     "game": "The Legend of Zelda: Breath of the Wild (JP)",
     "character": "Revali",
     "id": 78,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -806,7 +808,7 @@
     "game": "The Prince of Tennis: Sweat & Tears 2",
     "character": "Ryoma Echizen",
     "id": 81,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -816,7 +818,7 @@
     "game": "Fate/stay night [Realta Nua]",
     "character": "Saber",
     "id": 82,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -836,7 +838,7 @@
     "game": "Steins;Gate: My Darling's Embrace",
     "character": "Rintaro Okabe",
     "id": 84,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -866,7 +868,7 @@
     "game": "Dragon Quest series",
     "character": "Recurring command voice",
     "id": 87,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -896,7 +898,7 @@
     "game": "Dragon Quest XI",
     "character": "Hero / party lines",
     "id": 90,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -906,7 +908,7 @@
     "game": "Monster Hunter series",
     "character": "Guild Handler lines",
     "id": 91,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -926,7 +928,7 @@
     "game": "Final Fantasy Type-0",
     "character": "Class Zero",
     "id": 93,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -936,7 +938,7 @@
     "game": "Yakuza: Like a Dragon",
     "character": "Ichiban Kasuga",
     "id": 94,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -956,7 +958,7 @@
     "game": "Onimusha series",
     "character": "Nobunaga Oda",
     "id": 96,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -966,7 +968,7 @@
     "game": "Persona 5 Strikers",
     "character": "Joker",
     "id": 97,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -986,7 +988,7 @@
     "game": "Tales series",
     "character": "Various endings",
     "id": 99,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1016,7 +1018,7 @@
     "game": "Fate/stay night [Realta Nua]",
     "character": "Saber",
     "id": 102,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1026,7 +1028,7 @@
     "game": "Tales of the Abyss",
     "character": "Luke fon Fabre",
     "id": 103,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1036,7 +1038,7 @@
     "game": "Steins;Gate: My Darling's Embrace",
     "character": "Rintaro Okabe",
     "id": 104,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1046,7 +1048,7 @@
     "game": "Danganronpa series",
     "character": "Makoto Naegi",
     "id": 105,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1056,7 +1058,7 @@
     "game": "JoJo’s Bizarre Adventure: All-Star Battle",
     "character": "Giorno Giovanna",
     "id": 106,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1076,7 +1078,7 @@
     "game": "Kingdom Hearts series (JP dub)",
     "character": "Sora",
     "id": 108,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1086,7 +1088,7 @@
     "game": "Street Fighter series",
     "character": "Ryu",
     "id": 109,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1096,7 +1098,7 @@
     "game": "Dragon Quest XI",
     "character": "Hero / party lines",
     "id": 110,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1156,7 +1158,7 @@
     "game": "Onimusha series",
     "character": "Nobunaga Oda",
     "id": 116,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1176,7 +1178,7 @@
     "game": "The Legend of Zelda: Breath of the Wild (JP)",
     "character": "Revali",
     "id": 118,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1186,7 +1188,7 @@
     "game": "Tales series",
     "character": "Various endings",
     "id": 119,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1196,6 +1198,14 @@
     "game": "Samurai game proverb line",
     "character": "Musashi reference",
     "id": 120,
+    "issued": true,
+    "completed": false
+  },
+  {
+    "id": 56,
+    "quote": "The cake is a lie",
+    "game": "Portal",
+    "character": "GLaDOS",
     "issued": false,
     "completed": false
   }

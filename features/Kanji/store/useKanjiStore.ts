@@ -8,6 +8,9 @@ interface IKanjiState {
   selectedKanjiObjs: IKanjiObj[];
   selectedKanjiCollection: 'n5' | 'n4' | 'n3' | 'n2' | 'n1';
   selectedKanjiSets: string[];
+  selectedSubunitByUnit: Partial<
+    Record<'n5' | 'n4' | 'n3' | 'n2' | 'n1', string>
+  >;
   setSelectedGameModeKanji: (mode: string) => void;
   addKanjiObj: (kanji: IKanjiObj) => void;
   addKanjiObjs: (kanjis: IKanjiObj[]) => void;
@@ -17,6 +20,10 @@ interface IKanjiState {
   ) => void;
   setSelectedKanjiSets: (sets: string[]) => void;
   clearKanjiSets: () => void;
+  setSelectedSubunitForUnit: (
+    unit: 'n5' | 'n4' | 'n3' | 'n2' | 'n1',
+    subunitId: string,
+  ) => void;
 
   // Collapsed rows per unit (keyed by collection name)
   collapsedRowsByUnit: Record<string, number[]>;
@@ -89,6 +96,7 @@ const useKanjiStore = create<IKanjiState>(set => ({
   selectedKanjiObjs: [],
   selectedKanjiCollection: 'n5',
   selectedKanjiSets: [],
+  selectedSubunitByUnit: {},
 
   setSelectedGameModeKanji: gameMode =>
     set({ selectedGameModeKanji: gameMode }),
@@ -117,6 +125,14 @@ const useKanjiStore = create<IKanjiState>(set => ({
   setSelectedKanjiSets: sets => set({ selectedKanjiSets: sets }),
 
   clearKanjiSets: () => set({ selectedKanjiSets: [] }),
+
+  setSelectedSubunitForUnit: (unit, subunitId) =>
+    set(state => ({
+      selectedSubunitByUnit: {
+        ...state.selectedSubunitByUnit,
+        [unit]: subunitId,
+      },
+    })),
 
   collapsedRowsByUnit: {},
   setCollapsedRowsForUnit: (unit, rows) =>

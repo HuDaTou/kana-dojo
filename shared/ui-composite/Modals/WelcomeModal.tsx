@@ -447,7 +447,6 @@ const WelcomeModal = () => {
                       'fuji',
                       'moonlit-waterfall',
                       'luminous-tide',
-                      'sapphire-bloom',
                       'oboro',
                       'midnight-fjord',
                       'coral-abyss',
@@ -458,6 +457,34 @@ const WelcomeModal = () => {
                     ];
                     filteredThemes = themeSet.themes.filter(theme =>
                       allowedThemes.includes(theme.id),
+                    );
+                  }
+
+                  // Filter Premium themes
+                  if (themeSet.name.startsWith('Premium')) {
+                    const allowedPremiumThemes = [
+                      'alpine-stars',
+                      'bangkok-grand-palace-fireworks',
+                      // 'bangkok-night',
+                      // 'bangkok-night-pool',
+                      // 'bangkok-park',
+                      'bangkok-river',
+                      // 'bangkok-riverside-night',
+                      // 'bangkok-storm',
+                      // 'bangkok-sunset',
+                      'chureito-fuji-sunset',
+                      'crimson-coder',
+                      'dawn-pagoda',
+                      'dubai-skyline',
+                      'island-night',
+                      'marina-sunset',
+                      'moonlit-crossing',
+                      'neon-cafe',
+                      // 'retro-city',
+                      'tokyo-tower',
+                    ];
+                    filteredThemes = themeSet.themes.filter(theme =>
+                      allowedPremiumThemes.includes(theme.id),
                     );
                   }
 
@@ -567,7 +594,7 @@ const WelcomeModal = () => {
                                     className='block truncate text-sm whitespace-nowrap capitalize'
                                     style={{ color: theme.mainColor }}
                                   >
-                                    {theme.id.replaceAll('-', ' ')}
+                                    {theme.displayName ?? theme.id.replaceAll('-', ' ')}
                                   </span>
                                 )}
                               </div>

@@ -1,6 +1,6 @@
-export const KANJI_SET_PROGRESS_TARGET = 200;
-export const VOCAB_MEANING_PROGRESS_TARGET = 100;
-export const VOCAB_READING_PROGRESS_TARGET = 100;
+export const KANJI_SET_PROGRESS_TARGET = 50;
+export const VOCAB_MEANING_PROGRESS_TARGET = 40;
+export const VOCAB_READING_PROGRESS_TARGET = 25;
 export const VOCAB_SET_PROGRESS_TARGET_PER_WORD =
   VOCAB_MEANING_PROGRESS_TARGET + VOCAB_READING_PROGRESS_TARGET;
 
@@ -53,3 +53,4 @@ export function calculateVocabularySetProgress(
 
   return earned / (entries.length * VOCAB_SET_PROGRESS_TARGET_PER_WORD);
 }
+

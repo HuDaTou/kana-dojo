@@ -129,7 +129,7 @@ const MainMenu = () => {
               'border-b-8 border-(--main-color-accent)',
               'transition-all duration-200',
               'active:mb-[6px] active:translate-y-[6px] active:border-b-0',
-              'motion-safe:animate-float [--float-distance:-4px]',
+              'motion-safe:animate-float [--float-distance:-3px]',
               '[animation-delay:400ms]',
               !isGlassMode && 'opacity-90',
             )}
@@ -262,17 +262,16 @@ const MainMenu = () => {
           </div>
         </div>
         <Info />
-        <div
-          className={clsx(
-            'rounded-2xl bg-(--card-color)',
-            'duration-250',
-            'transition-all ease-in-out',
-            'flex flex-col md:flex-row',
-            'w-full',
-            'max-md:border-b-4 max-md:border-(--border-color)',
-            // 'backdrop-blur-xl',
-          )}
-        >
+        <div className='w-full rounded-2xl border-1 border-(--border-color) bg-(--background-color) p-1'>
+          <div
+            className={clsx(
+              'rounded-2xl bg-(--card-color)',
+              'duration-250',
+              'transition-all ease-in-out',
+              'flex flex-col md:flex-row',
+              'w-full',
+            )}
+          >
           {links.map((link, i) => (
             <Fragment key={i}>
               <Link
@@ -327,6 +326,7 @@ const MainMenu = () => {
               )}
             </Fragment>
           ))}
+          </div>
         </div>
       </div>
       <div

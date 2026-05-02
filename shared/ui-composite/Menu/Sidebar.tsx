@@ -30,7 +30,7 @@ const SIDEBAR_SECTION_STORAGE_PREFIX = 'sidebar-collapsible-';
 const SIDEBAR_DESKTOP_COLLAPSED_STORAGE_KEY = 'sidebar-desktop-collapsed';
 const SIDEBAR_PREFERENCES_VISITED_STORAGE_KEY = 'sidebar-preferences-visited';
 const SIDEBAR_ACTIVE_FLOAT_CLASSES =
-  'motion-safe:animate-float [--float-distance:-3.5px]';
+  'motion-safe:animate-float [--float-distance:-3px]';
 
 // ============================================================================
 // Types
@@ -733,4 +733,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-

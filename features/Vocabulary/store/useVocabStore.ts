@@ -19,6 +19,8 @@ interface IFormState {
   selectedVocabSets: string[];
   setSelectedVocabSets: (sets: string[]) => void;
   clearVocabSets: () => void;
+  selectedSubunitByUnit: Partial<Record<string, string>>;
+  setSelectedSubunitForUnit: (unit: string, subunitId: string) => void;
 
   // Collapsed rows per unit (keyed by collection name)
   collapsedRowsByUnit: Record<string, number[]>;
@@ -79,11 +81,19 @@ const useVocabStore = create<IFormState>()(
         set({ selectedVocabCollection: collection }),
       selectedVocabSets: [],
       setSelectedVocabSets: sets => set({ selectedVocabSets: sets }),
+      selectedSubunitByUnit: {},
       clearVocabSets: () => {
         set(() => ({
           selectedVocabSets: [],
         }));
       },
+      setSelectedSubunitForUnit: (unit, subunitId) =>
+        set(state => ({
+          selectedSubunitByUnit: {
+            ...state.selectedSubunitByUnit,
+            [unit]: subunitId,
+          },
+        })),
 
       collapsedRowsByUnit: {},
       setCollapsedRowsForUnit: (unit, rows) =>

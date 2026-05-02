@@ -1,6 +1,6 @@
 'use client';
 
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, type MouseEvent } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { Flame } from 'lucide-react';
@@ -8,6 +8,7 @@ import { useHasFinePointer } from '@/shared/hooks/generic/useHasFinePointer';
 import { useClick } from '@/shared/hooks/generic/useAudio';
 import { cn } from '@/shared/utils/utils';
 import { useThemePreferences } from '@/features/Preferences';
+import { suppressContinueKeyboardShortcuts } from '@/shared/utils/game/continueShortcutGuard';
 
 const Decorations = lazy(
   () => import('@/shared/ui-composite/Decorations/Decorations'),
@@ -82,6 +83,7 @@ export default function StreakMilestoneOverlay({
 
     const handleKeyDown = (event: KeyboardEvent) => {
       absorbKeyboardEvent(event);
+      suppressContinueKeyboardShortcuts();
       playClick();
       onDismiss();
     };
@@ -105,7 +107,10 @@ export default function StreakMilestoneOverlay({
     };
   }, [milestone, onDismiss, playClick]);
 
-  const handleDismiss = () => {
+  const handleDismiss = (event: MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    suppressContinueKeyboardShortcuts();
     playClick();
     onDismiss();
   };

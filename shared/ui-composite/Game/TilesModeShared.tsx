@@ -208,6 +208,16 @@ BlankTile.displayName = 'BlankTile';
 
 export type BottomBarState = 'check' | 'correct' | 'wrong';
 
+export const getAnswerRowClassName = (minHeight: '5rem' | '5.5rem' = '5rem') =>
+  `flex min-h-[${minHeight}] w-full items-center border-b-4 border-(--border-color) px-2 pb-2 md:w-3/4 lg:w-2/3 xl:w-1/2`;
+
+export const getGlassModeClassName = (
+  baseClassName: string,
+  isGlassMode: boolean,
+) =>
+  clsx(baseClassName, isGlassMode && 'rounded-xl bg-(--card-color) px-4 py-2');
+
+
 export const useTilesModeActionKey = (
   buttonRef: RefObject<HTMLButtonElement | null>,
 ) => {

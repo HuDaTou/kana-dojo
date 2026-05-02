@@ -50,7 +50,7 @@ const TrainingActionBar: React.FC<ITopBarProps> = ({
     currentDojo === 'kana'
       ? kanaGroupIndices.length !== 0
       : currentDojo === 'kanji'
-        ? selectedKanjiObjs.length >= 10
+        ? selectedKanjiObjs.length > 0
         : currentDojo === 'vocabulary'
           ? selectedVocabSets.length > 0 || selectedWordObjs.length > 0
           : false;

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { toHiragana } from 'wanakana';
 import { IVocabObj } from '@/features/Vocabulary/store/useVocabStore';
 import { useClick, useCorrect, useError } from '@/shared/hooks/generic/useAudio';
-import { useGameStats, useStatsDisplay } from '@/features/Progress';
+import { useGameStats, useStatsDisplay, useStatsStore } from '@/features/Progress';
 import Stars from '@/shared/ui-composite/Game/Stars';
 import AnswerSummary from '@/shared/ui-composite/Game/AnswerSummary';
 import SSRAudioButton from '@/shared/ui-composite/audio/SSRAudioButton';
@@ -24,6 +24,7 @@ import {
   type VocabQuizType,
 } from '@/features/Vocabulary/components/Game/vocabFormatLock';
 import useSetProgressStore from '@/features/Progress/store/useSetProgressStore';
+import { shouldSuppressContinueKeyboardShortcut } from '@/shared/utils/game/continueShortcutGuard';
 
 // Get the global adaptive selector for weighted character selection
 const adaptiveSelector = getGlobalAdaptiveSelector();
@@ -46,7 +47,7 @@ const VocabInputGame = ({
   const recordVocabularyProgress = useSetProgressStore(
     state => state.recordVocabularyProgress,
   );
-  const { score, setScore } = useStatsDisplay();
+  const { setScore } = useStatsDisplay();
   const gameStats = useGameStats();
 
   const isGlassMode = useThemePreferences().isGlassMode;
@@ -168,6 +169,15 @@ const VocabInputGame = ({
     const handleKeyDown = (event: KeyboardEvent) => {
       const isEnter = event.key === 'Enter';
       const isSpace = event.code === 'Space' || event.key === ' ';
+      const isContinueShortcut = isEnter || isSpace;
+
+      if (
+        isContinueShortcut &&
+        shouldSuppressContinueKeyboardShortcut()
+      ) {
+        event.preventDefault();
+        return;
+      }
 
       if (isEnter) {
         if (justAnsweredRef.current) {
@@ -200,14 +210,18 @@ const VocabInputGame = ({
     return null;
   }
 
+  const normalizeAnswer = (value: string): string => value.trim().toLowerCase();
+
   const isInputCorrect = (input: string): boolean => {
     if (quizType === 'meaning') {
       if (!isReverse) {
         return (
-          Array.isArray(targetChar) && targetChar.includes(input.toLowerCase())
+          Array.isArray(targetChar) &&
+          targetChar.some(answer => normalizeAnswer(answer) === normalizeAnswer(input))
         );
       } else {
-        return input === targetChar;
+        const reverseTargetChar = typeof targetChar === 'string' ? targetChar : '';
+        return normalizeAnswer(input) === normalizeAnswer(reverseTargetChar);
       }
     } else {
       const targetReading = typeof targetChar === 'string' ? targetChar : '';
@@ -241,7 +255,7 @@ const VocabInputGame = ({
       timeTaken: answerTimeMs,
     });
     void recordVocabularyProgress(correctChar, quizType);
-    setScore(score + 1);
+    setScore(useStatsStore.getState().score + 1);
 
     triggerCrazyMode();
     adaptiveSelector.updateCharacterWeight(correctChar, true);
@@ -290,10 +304,11 @@ const VocabInputGame = ({
       inputValue.trim(),
       correctAnswer,
     );
-    if (score - 1 < 0) {
+    const nextScore = useStatsStore.getState().score - 1;
+    if (nextScore < 0) {
       setScore(0);
     } else {
-      setScore(score - 1);
+      setScore(nextScore);
     }
     triggerCrazyMode();
     adaptiveSelector.updateCharacterWeight(correctChar, false);
@@ -370,7 +385,7 @@ const VocabInputGame = ({
             <span className='mb-2 text-sm text-(--secondary-color)'>
               {quizType === 'meaning'
                 ? isReverse
-                  ? 'What is the meaning?'
+                  ? 'What is the word?'
                   : 'What is the meaning?'
                 : 'What is the reading?'}
             </span>
