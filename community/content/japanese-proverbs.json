@@ -514,5 +514,102 @@
   "romaji": "Tabi wa michizure yo wa nasake",
   "english": "Travel needs companions; life needs kindness",
   "meaning": "Relationships and compassion matter"
+},
+  {
+  "japanese": "為せば成る為さねば成らぬ何事も",
+  "romaji": "Naseba naru nasaneba naranu nanigoto mo",
+  "english": "If you try, you can do it; if you don’t try, you cannot do anything",
+  "meaning": "Success depends entirely on effort. Without action, nothing is possible."
+},
+  {
+    "japanese": "出る杭は打たれるが、出過ぎた杭は打たれない",
+    "romaji": "Deru kui wa utareru ga, desugita kui wa utarenai",
+    "english": "The nail that sticks out gets hammered down, but the one that sticks out too much does not",
+    "meaning": "Moderate deviation invites criticism, but exceptional excellence can transcend opposition."
+},
+  {
+    "japanese": "下手の横好き",
+    "romaji": "Heta no yokozuki",
+    "english": "Unskilled but enthusiastic",
+    "meaning": "Someone may lack skill but still deeply enjoy what they do. Passion does not require mastery."
+},
+  {
+    "japanese": "知らぬが仏",
+    "romaji": "Shiranu ga hotoke",
+    "english": "Not knowing is Buddha",
+    "meaning": "Ignorance can sometimes bring peace of mind. Knowing everything is not always beneficial."
+},
+  {
+    "japanese": "住めば都",
+    "romaji": "Sumeba miyako",
+    "english": "If you live there, it becomes the capital",
+    "meaning": "Any place can become comfortable and meaningful once you get used to it."
+},
+  {
+    "japanese": "情けは人の為ならず",
+    "romaji": "Nasake wa hito no tame narazu",
+    "english": "Kindness is not just for others",
+    "meaning": "Helping others ultimately benefits yourself as well."
+},
+  {
+    "japanese": "弘法にも筆の誤り",
+    "romaji": "Koubou ni mo fude no ayamari",
+    "english": "Even Kobo makes mistakes with his brush",
+    "meaning": "Even experts make mistakes sometimes."
+},
+  {
+    "japanese": "二階から目薬",
+    "romaji": "Nikai kara megusuri",
+    "english": "Eye drops from the second floor",
+    "meaning": "An ineffective or impractical method of doing something."
+},
+  {
+    "japanese": "渡る世間に鬼はない",
+    "romaji": "Wataru seken ni oni wa nai",
+    "english": "There are no demons in the world you walk through",
+    "meaning": "Most people are kinder than you expect."
+},
+  {
+    "japanese": "鳴かぬなら鳴かせてみせようホトトギス",
+    "romaji": "Nakanu nara nakasete miseyou hototogisu",
+    "english": "If it won’t sing, I’ll make it sing",
+    "meaning": "Represents a proactive, strategic approach to solving problems (associated with leadership style)."
+},
+  {
+    "japanese": "鳴かぬなら鳴くまで待とうホトトギス",
+    "romaji": "Nakanu nara naku made matou hototogisu",
+    "english": "If it won’t sing, wait until it does",
+    "meaning": "Represents patience and timing as a strategy."
+},
+  {
+    "japanese": "鳴かぬなら殺してしまえホトトギス",
+    "romaji": "Nakanu nara koroshite shimae hototogisu",
+    "english": "If it won’t sing, kill it",
+    "meaning": "Represents a ruthless, decisive leadership approach."
+},
+  {
+    "japanese": "鶏口となるも牛後となるなかれ",
+    "romaji": "Keikou to naru mo gyuugo to naru nakare",
+    "english": "Better be the head of a chicken than the tail of a cow",
+    "meaning": "It is better to lead a small group than to follow in a large one."
+},
+  {
+    "japanese": "舟に刻みて剣を求む",
+    "romaji": "Fune ni kizami te ken wo motomu",
+    "english": "Carving a mark on the boat to find a lost sword",
+    "meaning": "Using outdated methods for changing situations leads to failure."
+},
+  {
+    "japanese": "朱に交われば赤くなる",
+    "romaji": "Shu ni majiwareba akaku naru",
+    "english": "If you mix with vermilion, you become red",
+    "meaning": "People are influenced by their environment and associations."
+},
+  {
+    "japanese": "青は藍より出でて藍より青し",
+    "romaji": "Ao wa ai yori idete ai yori aoshi",
+    "english": "Blue comes from indigo but is bluer than indigo",
+    "meaning": "Students can surpass their teachers."
 }
+  
 ]
