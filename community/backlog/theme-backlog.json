@@ -788,8 +788,10 @@
     "backgroundColor": "oklch(20.0% 0.045 290.0 / 1)",
     "mainColor": "oklch(68.0% 0.155 315.0 / 1)",
     "secondaryColor": "oklch(75.0% 0.125 280.0 / 1)",
-    "issued": true,
-    "completed": false
+    "issued": false,
+    "completed": false,
+    "completedBy": "tanish-sd26",
+    "completedPR": 15786
   },
   {
     "id": "lucky-bamboo",
