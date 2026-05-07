@@ -228,9 +228,15 @@
     "secondaryColor": "oklch(70.0% 0.130 220.0 / 1)"
   },
   {
-  "id": "konbini-light",
-  "backgroundColor": "oklch(96.0% 0.015 210.0 / 1)",
-  "mainColor": "oklch(55.0% 0.185 200.0 / 1)",
-  "secondaryColor": "oklch(60.0% 0.155 25.0 / 1)
-},
+    "id": "konbini-light",
+    "backgroundColor": "oklch(96.0% 0.015 210.0 / 1)",
+    "mainColor": "oklch(55.0% 0.185 200.0 / 1)",
+    "secondaryColor": "oklch(60.0% 0.155 25.0 / 1)"
+  },
+  {
+    "id": "ginkgo-gold",
+    "backgroundColor": "oklch(23.0% 0.045 85.0 / 1)",
+    "mainColor": "oklch(88.0% 0.170 95.0 / 1)",
+    "secondaryColor": "oklch(72.0% 0.135 75.0 / 1)"
+  }
 ]
