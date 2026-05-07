@@ -770,7 +770,7 @@
   {
     "id": 129,
     "fact": "The Japanese word 'ganbarimasu' (頑張ります) is said before attempting something difficult - a commitment to do your absolute best.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -860,7 +860,7 @@
   {
     "id": 144,
     "fact": "Japan has a stone you can lick to predict the weather at Kamigamo Shrine - if it tastes salty, rain is coming.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {

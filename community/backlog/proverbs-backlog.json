@@ -329,7 +329,7 @@
     "romaji": "Deru kugi wa utareru",
     "english": "The nail that sticks out gets hammered down",
     "meaning": "Those who stand out may be criticized",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1088,7 +1088,7 @@
     "english": "Fall seven times, get up eight",
     "meaning": "Never give up",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 122,
@@ -1097,7 +1097,7 @@
     "english": "Good medicine tastes bitter",
     "meaning": "Helpful advice can be harsh",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 123,

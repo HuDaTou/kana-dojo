@@ -298,7 +298,7 @@
     "backgroundColor": "oklch(98.0% 0.005 90.0 / 1)",
     "mainColor": "oklch(35.0% 0.165 255.0 / 1)",
     "secondaryColor": "oklch(55.0% 0.145 200.0 / 1)",
-    "issued": false,
+    "issued": true,
     "completed": false,
     "completedBy": "Arthur0li",
     "completedPR": 14890
@@ -1134,7 +1134,7 @@
     "backgroundColor": "oklch(22.0% 0.015 250.0 / 1)",
     "mainColor": "oklch(72.0% 0.105 230.0 / 1)",
     "secondaryColor": "oklch(78.0% 0.025 260.0 / 1)",
-    "issued": false,
+    "issued": true,
     "completed": false,
     "completedBy": "nozomee",
     "completedPR": 15365
@@ -1661,7 +1661,9 @@
     "mainColor": "oklch(74.0% 0.145 135.0 / 1)",
     "secondaryColor": "oklch(65.0% 0.085 115.0 / 1)",
     "issued": false,
-    "completed": false
+    "completed": false,
+    "completedBy": "VenkateshDevarakonda0706",
+    "completedPR": 15972
   },
   {
     "id": "tsukimi-night",
